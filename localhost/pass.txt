@@ -1,0 +1,622 @@
+Логін sem4uk
+Пароль Bc1329at
+
+@media (max-width: 768px) {
+    .footer_row1 {
+        flex-direction: column;
+    }
+    .header_menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 164, 70, 0.95); /* Semi-transparent green background */
+        z-index: 1000; /* Above other content */
+        overflow-y: auto; /* For scrollable content */
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .header_menu.active {
+        transform: translateX(0);
+    }
+
+    .header_menu ul {
+        display: block;
+        margin-top: 60px; /* Adjust as needed for spacing */
+    }
+
+    .header_menu ul li {
+        margin: 0;
+        border-bottom: 1px solid #fff; /* Add separators */
+    }
+
+    .header_menu ul li a {
+        display: block;
+        padding: 15px;
+        color: white;
+        font-size: 18px; /* Larger text for touch targets */
+        text-align: center;
+    }
+
+    .header_menu ul li ul {
+        display: none; /* Submenus initially hidden */
+    }
+
+    .header_menu ul li.active ul {
+        display: block; /* Show submenu for active item */
+    }
+    
+    /* Styling for the close button */
+    .header_menu_close {
+        position: absolute;
+        top: 20px; /* Adjust as needed */
+        right: 20px; /* Adjust as needed */
+        font-size: 30px; /* Adjust as needed */
+        color: white;
+        cursor: pointer;
+    }
+    .news_item{
+        width: 100%;
+    }
+    .header_left {
+        /* Adjust the layout for mobile screens */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header_cat .header_cat_btn {
+        /* Style the catalog button for a more touch-friendly interface */
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        padding: 10px; /* Larger touch targets */
+        /* Other styling as needed */
+    }
+
+    .header_cat .header_cat_menu {
+        /* Adjust the dropdown menu for mobile */
+        width: 100%; /* Full width */
+        position: absolute;
+        z-index: 100;
+        /* Hide or show the menu as needed */
+    }
+
+    .header_search {
+        /* Make the search bar full width */
+        width: 100%;
+        margin-top: 10px; /* Add some space between search bar and catalog button */
+    }
+
+    .header_search_ico, .header_search_input, .header_search_submit {
+        /* Ensure these elements align nicely on mobile */
+        display: block;
+    }
+
+    .header_search_input input, .header_search_submit input {
+        /* Full-width inputs for mobile */
+        width: 100%;
+        /* Additional responsive adjustments */
+    }
+    .footer_row1_item {
+        border-right: none;
+        padding-right: 0;
+        margin-right: 0;
+        margin-bottom: 20px; /* Добавляем отступы между элементами */
+    }
+    
+    .footer_row1_item_title {
+        font-size: 24px; /* Увеличиваем размер для мобильных устройств */
+    }
+    
+    .footer_row1_item_menu a {
+        font-size: 20px; /* Увеличиваем размер текста ссылок */
+    }
+    
+    .footer_row1_item:last-child {
+        margin-bottom: 0; /* У последнего элемента отступ снизу не нужен */
+    }
+    
+    .footer_row1_item:last-child .f_phone a {
+        font-size: 22px; /* Увеличиваем размер текста телефона */
+    }
+}
+
+/* Стили для нижней части футера */
+.footer_row2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px; /* Добавляем отступ сверху */
+}
+
+.f_copy {
+    font-size: 14px; /* Меняем размер шрифта на удобный для чтения */
+}
+
+@media (max-width: 768px) {
+    .footer_row2 {
+        flex-direction: column;
+        align-items: flex-start; /* Выравнивание по левому краю */
+    }
+    
+    .f_copy {
+        margin-bottom: 20px; /* Добавляем отступ между текстом и логотипом */
+    }
+    
+    .f_logo {
+        align-self: center; /* Центрирование логотипа */
+        margin-bottom: 20px; /* Добавляем отступ снизу */
+    }
+}
+.social{
+	display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+	-webkit-box-align:center;
+	-ms-flex-align:center;
+	align-items:center
+}
+.social_title{
+	margin-right:10px
+}
+.social_items{
+	display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+	-webkit-box-align:center;
+	-ms-flex-align:center;
+	align-items:center
+}
+.social_items a{
+	-webkit-transition:.3s;
+	transition:.3s;
+	margin-right:10px;
+	display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+	-webkit-box-pack:center;
+	-ms-flex-pack:center;
+	justify-content:center;
+	-webkit-box-align:center;
+	-ms-flex-align:center;
+	align-items:center;
+	width:30px;
+	height:30px;
+	background:#131313;
+	border-radius:50%
+}
+.social_items a svg{
+	max-height:20px
+}
+.social_items a svg path{
+	fill:#fff
+}
+.social_items a:last-child{
+	margin-right:0
+}
+.social_items a:hover{
+	-webkit-transform:scale(1.2);
+	-ms-transform:scale(1.2);
+	transform:scale(1.2)
+}
+.footer_row2{
+	margin-top:30px;
+	padding-top:30px;
+	border-top:2px solid #ffd74a;
+	display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+	-webkit-box-pack:justify;
+	-ms-flex-pack:justify;
+	justify-content:space-between;
+	-webkit-box-align:center;
+	-ms-flex-align:center;
+	align-items:center
+}
+.main_slider_item {
+    position: relative;
+    border-radius: 12px; /* Скругление углов */
+    overflow: hidden; /* Обрезаем всё, что выходит за границы */
+    background: url('path-to-your-image.jpg') center center/cover no-repeat; /* Путь к вашему изображению */
+    /* Устанавливаем минимальную высоту для мобильных устройств и более крупных экранов */
+    min-height: 300px; /* Минимальная высота для больших экранов */
+}
+
+.main_slider_content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    padding: 0 20px; /* Паддинги по бокам */
+    box-sizing: border-box;
+    z-index: 2;
+    text-align: center; /* Центрируем содержимое */
+    color: #fff; /* Белый текст */
+}
+
+.main_slider_title h1, .main_slider_title h2 {
+    margin: 0; /* Убираем отступы у заголовков */
+}
+
+.main_slider_item_btns {
+    display: flex;
+    justify-content: center; /* Центрируем кнопки */
+    gap: 10px; /* Расстояние между кнопками */
+}
+@media (max-width: 576px) {
+    .main_slider_item {
+        min-height: 150px; /* Меньшая минимальная высота для мобильных телефонов */
+    }
+
+    /* Уменьшаем размеры заголовков и цены на мобильных устройствах */
+    .main_slider_title h1 {
+        font-size: 16px; /* Размер шрифта для заголовка */
+    }
+
+    .main_slider_title .main_slider_price {
+        font-size: 20px; /* Размер шрифта для цены */
+    }
+
+    .main_slider_title h2 {
+        font-size: 14px; /* Размер шрифта для подзаголовка */
+    }
+}
+/* Адаптивные стили для блока .s1 */
+@media screen and (max-width: 768px) {
+    
+    .main_slider_item {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .screen_img img {
+        width: 100%;
+    }
+
+    .main_slider_content {
+        padding: 15px;
+    }
+
+    .main_slider_title h1 {
+        font-size: 20px;
+        line-height: 1.3;
+    }
+
+    .main_slider_price {
+        font-size: 24px;
+        display: block;
+        margin-top: 10px;
+    }
+
+    .main_slider_title h2 {
+        font-size: 16px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+    }
+    .main_slider_item_link a span:last-child{
+        margin-top: 7px;
+        margin-left: 7px;
+        width:23px;
+        height: 23px;
+    }
+    .main_slider_item:after{
+        display: none;
+    }
+    .s6_50{
+        width: 48% !important;
+        float: left;
+        display: flex;
+        flex-wrap: nowrap;
+        position: relative;
+        
+    }
+    .main_slider_title{
+        padding-top: 10%;
+    }
+    .main_slider_item_link a span:last-child:before{
+        background-color: rgb(0 0 0 / 0%);;
+    }
+    .main_slider_item_buy a{
+        width: 100%;
+        height: 30px;
+    }
+    .main_slider_item_link a{
+        margin-left:18%
+    }
+    .main_slider_item_buy,
+    .main_slider_item_link {
+        font-size: 16px;
+
+        border-radius: 5px;
+        margin: 5px auto; /* Center the buttons */
+        display: block;
+        width: 80%; /* Use a width that is suitable for thumb reach */
+        max-width: 200px; /* Limit the maximum width */
+        color: #fff;
+        text-decoration: none;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    .main_slider_item_buy:hover,
+    .main_slider_item_link:hover {
+        background-color: #008c3a;
+    }
+
+    /* Since we're displaying buttons as block elements, this isn't necessary */
+    .main_slider_item_btns {
+        display: block;
+    }
+
+    
+
+
+
+    .main_slider_item {
+        /* Для мобильных устройств мы хотим, чтобы элементы слайдера занимали всю ширину */
+        width: 100%;
+        margin-bottom: 20px;
+        min-height: 200px; /* добавляем пространство между элементами слайдера */
+    }
+    .s6_items {
+        display: flex;
+        flex-direction: column;
+    }
+    .s6_item {
+        width: 100%;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtle shadow for depth */
+    }
+    .s6_item_img img {
+        width: auto; /* maintain aspect ratio */
+        max-width: 80%; /* relative to parent */
+        height: auto;
+        display: block; /* prevents inline extra space */
+        margin: 0 auto; /* center the image */
+    }
+    .s6_item_title {
+        font-size: 1.25rem; /* larger for readability */
+        margin-top: 0.5rem;
+        text-align: center; /* center the titles */
+    }
+    .s6_item_btn a {
+        display: inline-block;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        margin-top: 0.5rem;
+        background-color: #1a1a1a; /* as per your original color */
+        color: white;
+        text-align: center;
+        width: auto;
+        border-radius: 0.3rem;
+        box-shadow: none; /* remove any existing shadows */
+    }
+    
+    .product_items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; /* или используйте 'flex-start' для выравнивания элементов в начале */
+      }
+      .main_slider_price{
+        display: none;
+      }
+      .product_item_wr {
+        width: 50%; /* Adjust width to show only two products */
+        float: left; /* Align side by side */
+        /* Add additional styling as needed */
+    }
+    .screen_img img {
+        /* Делаем изображение респонсивным */
+        width: 100%;
+
+        border-radius: 12px; /* Если у вас есть радиус границы */
+    }
+    
+
+    .main_slider_cat,
+    .main_slider_whish {
+        /* скрываем логотипы брендов и иконки желаний на маленьких экранах */
+        display: none;
+    }
+
+    .main_slider_content {
+        /* Настраиваем позиционирование и отображение содержимого слайдера */
+        padding: 15px; /* Меньше паддинг для мобильных */
+        text-align: center; /* Выравниваем текст по центру */
+    }
+
+    .main_slider_title h1 {
+        font-size: 18px; /* Уменьшаем размер заголовка */
+        line-height: 1.2;
+    }
+
+    .main_slider_title h2 {
+        font-size: 16px; /* Уменьшаем размер подзаголовка */
+    }
+    .searchs1 {
+        display: block; /* Отображаем блок только на мобильных устройствах */
+        height: 50px;
+        position:relative;
+    width: 100%; /* Растягиваем на всю ширину */
+    box-sizing: border-box; /* Учитываем padding и border в общей ширине */
+    padding: 0 15px;
+    }
+    .searchs2{
+        display: none;
+    }
+    .main_slider_price {
+        font-size: 20px; /* Уменьшаем размер цены */
+    }
+
+    .main_slider_item_btns {
+        flex-direction: column; /* Ставим кнопки друг под другом */
+    }
+
+    .main_slider_item_buy a,
+    .main_slider_item_link a {
+        font-size: 16px; /* Уменьшаем размер текста кнопок */
+    }
+}
+/* Стили для мобильных и всех устройств */
+.search-fullwidth {
+    display: none; /* Скрыт по умолчанию */
+    width: 100%; /* Растягиваем на всю ширину */
+    box-sizing: border-box; /* Учитываем padding и border в общей ширине */
+    padding: 0 15px; /* Добавляем padding по бокам для сохранения контента внутри */
+}
+
+.search-input-container, .search-submit-container {
+    border-top: 1px gray solid;
+    border-bottom: 1px gray solid;
+    width: 100%; /* Растягиваем input и кнопку на всю ширину */
+}
+.search-input-container{
+    padding-right: 10px;
+	max-width:100%
+}
+.search-input-container input{
+	padding-left:30px;
+	font-size:16px;
+	line-height:1.2;
+	width:100%
+}
+.search-input-container input::-webkit-input-placeholder{
+	font-size:16px;
+	line-height:1.2
+}
+.search-input-container input::-moz-placeholder{
+	font-size:16px;
+	line-height:1.2
+}
+.search-input-container input:-ms-input-placeholder{
+	font-size:16px;
+	line-height:1.2
+}
+.search-input-container input::-ms-input-placeholder{
+	font-size:16px;
+	line-height:1.2
+}
+.search-input-container input::placeholder{
+	font-size:16px;
+	line-height:1.2
+}
+.search-input, .search-submit {
+    height: 50px; /* Высота 50 пикселей */
+    width: 100%;
+    border: none; /* Убираем границу */
+}
+
+/* Медиазапрос для мобильных устройств */
+@media screen and (max-width: 768px) {
+    .search-fullwidth {
+        display: block; /* Показываем на мобильных устройствах */
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .searchs1 {
+        display: none; /* Отображаем блок только на мобильных устройствах */
+        
+    }
+    .searchs2{
+        display: block;
+        
+    }
+}
+/* Адаптивные стили для категорий .s2 */
+@media screen and (max-width: 768px) {
+    .categories a {
+        /* Для мобильных устройств мы хотим, чтобы иконки категорий занимали определенный процент ширины */
+        width: 48%; /* По две иконки в ряд на мобильных */
+        margin-bottom: 10px; /* Добавляем пространство между иконками */
+        padding: 10px; /* Уменьшаем паддинг */
+        flex: 0 0 auto; /* элементы не будут растягиваться и сжиматься */
+  margin-right: 10px;
+    }
+    .categories a img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+    .categories {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* для плавной прокрутки на iOS */
+      }
+}
+
+/* Возможно, вам понадобится добавить дополнительные медиазапросы для разных размеров экранов. */
+
+@media screen and (max-width:1800px){
+	.wrapper{
+		padding-left:15px;
+		padding-right:15px
+	}
+}
+@media screen and (max-width:1700px){
+	.wrapper{
+		padding-left:15px;
+		padding-right:15px
+	}
+}
+@media screen and (max-width:1600px){
+	.wrapper{
+		padding-left:15px;
+		padding-right:15px
+	}
+}
+@media screen and (max-width:1500px){
+	.wrapper{
+		padding-left:15px;
+		padding-right:15px
+	}
+}
+@media screen and (max-width:1450px){
+	.wrapper{
+		padding-left:15px;
+		padding-right:15px
+	}
+}
+@media screen and (max-width:1350px){
+	.wrapper{
+		padding-left:15px;
+		padding-right:15px
+	}
+}
+@media screen and (max-width:1320px){
+	.wrapper{
+		padding-left:15px;
+		padding-right:15px
+	}
+}
+@media screen and (max-width:992px){
+	.wrapper{
+		padding-left:15px;
+		padding-right:15px
+	}
+	.burger{
+		display:-webkit-box;
+		display:-ms-flexbox;
+		display:flex
+	}
+}
+@media screen and (max-width:720px){
+	.wrapper{
+		padding-left:15px;
+		padding-right:15px
+	}
+	h1{
+		font-size:30px
+	}
+	h2{
+		font-size:22px
+	}
+}
+
+/*# sourceMappingURL=styles.css.map */
+ 

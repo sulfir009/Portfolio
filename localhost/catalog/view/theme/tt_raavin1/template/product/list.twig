@@ -1,0 +1,519 @@
+{{ header }}
+<div class="category-info">
+	<div class="container">
+		<div class="row">
+			<h2 class="category-name">
+				{{ heading_title }}
+				<small class="special-perc pull-right lowercase mt-10">{{ personal_discount }} <span>{{ discout_value }}
+						%</span></small>
+			</h2>
+			{% if thumb or description %}
+				{% if thumb %}
+					<div class="thumb"><img src="{{ thumb }}" alt="{{ heading_title }}" title="{{ heading_title }}"
+					                        class="img-thumbnail"/></div>
+				{% endif %}
+				{% if description %}
+					<div class="description">{{ description }}</div>
+				{% endif %}
+			{% endif %}
+		</div>
+	</div>
+
+</div>
+<div id="product-category" class="container layer-category">
+	<div class="layered-navigation-block"></div>
+	<div class="ajax-loader">
+		<img src="{{ ajax_loader }}" alt=""/>
+	</div>
+	<div class="row">
+
+		<div id="content" class="{{ class }}">
+			{{ content_top }}
+
+			<div class="custom-category">
+				<div class="toolbar">
+					<div class="list-filter row" style="margin-left: 0; margin-right: 0;">
+						<label class="col-md-3">
+							<span>{{ list_search }}</span>
+							{% if use_layered %}
+								<input class="form-control" type="text" value="{{ search }}"
+								       data-href="{{ search_href }}" id="search-input">
+							{% else %}
+								<input class="form-control" type="text" value="{{ search }}"
+								       data-href="{{ search_href }}" id="search-input">
+							{% endif %}
+						</label>
+						<label class="col-md-3">
+    <span>Артікул</span>
+    <input class="form-control" type="text" name="filter_sku" value="{{ filter_sku }}" placeholder="{{ entry_sku }}" id="sku-input" data-href="{{ search_href }}">
+</label>
+<label class="col-md-3">
+    <span>Штрихкод</span>
+    <input class="form-control" type="text" name="filter_barcode" value="{{ filter_barcode }}" placeholder="{{ entry_barcode }}" id="barcode-input" data-href="{{ search_href }}">
+</label>
+						<label class="col-md-3">
+							<span>{{ list_manufacturer }}</span>
+							{% if use_layered %}
+								<select id="input-available" class="form-control"
+								        onchange="ocfilter.filter(this.value);">
+									{% for item in ajax_manufacturers %}
+										{% if item.value == manufacturer %}
+											<option value="{{ item.href }}"
+											        selected="selected">{{ item.text }}</option>
+										{% else %}
+											<option value="{{ item.href }}">{{ item.text }}</option>
+										{% endif %}
+									{% endfor %}
+								</select>
+							{% else %}
+								<select id="input-sort" class="form-control" onchange="location = this.value;">
+									{% for item in manufacturers %}
+										{% if item.value == manufacturer %}
+											<option value="{{ item.href }}"
+											        selected="selected">{{ item.text }}</option>
+										{% else %}
+											<option value="{{ item.href }}">{{ item.text }}</option>
+										{% endif %}
+									{% endfor %}
+								</select>
+							{% endif %}
+						</label>
+						<label class="col-md-3">
+							<span>{{ list_categories }}</span>
+							{% if use_layered %}
+								<select id="input-available" class="form-control"
+								        onchange="ocfilter.filter(this.value);">
+									{% for item in ajax_categories %}
+										{% if item.value == category %}
+											<option value="{{ item.href }}"
+											        selected="selected">{{ item.text }}</option>
+										{% else %}
+											<option value="{{ item.href }}">{{ item.text }}</option>
+										{% endif %}
+									{% endfor %}
+								</select>
+							{% else %}
+								<select id="input-sort" class="form-control" onchange="location = this.value;">
+									{% for item in categories %}
+										{% if item.value == category %}
+											<option value="{{ item.href }}"
+											        selected="selected">{{ item.text }}</option>
+										{% else %}
+											<option value="{{ item.href }}">{{ item.text }}</option>
+										{% endif %}
+									{% endfor %}
+								</select>
+							{% endif %}
+						</label>
+						<label class="col-md-3">
+							<span>{{ list_taste }}</span>
+							{% if use_layered %}
+								<select id="input-available" class="form-control"
+								        onchange="ocfilter.filter(this.value);">
+									{% for item in ajax_tastes %}
+										{% if item.value == taste %}
+											<option value="{{ item.href }}"
+											        selected="selected">{{ item.text }}</option>
+										{% else %}
+											<option value="{{ item.href }}">{{ item.text }}</option>
+										{% endif %}
+									{% endfor %}
+								</select>
+							{% else %}
+								<select id="input-sort" class="form-control" onchange="location = this.value;">
+									{% for item in tastes %}
+										{% if item.value == taste %}
+											<option value="{{ item.href }}"
+											        selected="selected">{{ item.text }}</option>
+										{% else %}
+											<option value="{{ item.href }}">{{ item.text }}</option>
+										{% endif %}
+									{% endfor %}
+								</select>
+							{% endif %}
+						</label>
+						<label class="col-md-3">
+							<span>{{ list_stock }}</span>
+							{% if use_layered %}
+								<select id="input-available" class="form-control"
+								        onchange="ocfilter.filter(this.value);">
+									{% for item in ajax_specials %}
+										{% if item.value == special %}
+											<option value="{{ item.href }}"
+											        selected="selected">{{ item.text }}</option>
+										{% else %}
+											<option value="{{ item.href }}">{{ item.text }}</option>
+										{% endif %}
+									{% endfor %}
+								</select>
+							{% else %}
+								<select id="input-sort" class="form-control" onchange="location = this.value;">
+									{% for item in specials %}
+										{% if item.value == special %}
+											<option value="{{ item.href }}"
+											        selected="selected">{{ item.text }}</option>
+										{% else %}
+											<option value="{{ item.href }}">{{ item.text }}</option>
+										{% endif %}
+									{% endfor %}
+								</select>
+							{% endif %}
+						</label>
+						<label class="col-md-3">
+							<span>{{ list_availability }}</span>
+							{% if use_layered %}
+								<select id="input-available" class="form-control"
+								        onchange="ocfilter.filter(this.value);">
+									{% for item in ajax_availables %}
+										{% if item.value == available %}
+											<option value="{{ item.href }}"
+											        selected="selected">{{ item.text }}</option>
+										{% else %}
+											<option value="{{ item.href }}">{{ item.text }}</option>
+										{% endif %}
+									{% endfor %}
+								</select>
+							{% else %}
+								<select id="input-sort" class="form-control" onchange="location = this.value;">
+									{% for item in availables %}
+										{% if item.value == available %}
+											<option value="{{ item.href }}"
+											        selected="selected">{{ item.text }}</option>
+										{% else %}
+											<option value="{{ item.href }}">{{ item.text }}</option>
+										{% endif %}
+									{% endfor %}
+								</select>
+							{% endif %}
+						</label>
+						{% if use_layered %}
+							<label class="col-md-3">
+								<span>{{ list_price }}</span>
+								<input type="text" id="slider-price" data-href="{{ price_href }}"
+								       data-slider-value="[{{ start_price }},{{ end_price }}]"
+								       data-slider-min="{{ min_price }}"
+								       data-slider-max="{{ max_price }}" data-slider-step="1"
+								       value="{{ start_price }},{{ end_price }}">
+							</label>
+						{% endif %}
+						<label class="col-md-3">
+							<span>&nbsp;</span>
+							{% if use_layered %}
+								<button class="form-control" value="{{ ajax_zero_out_href }}"
+								        onclick="ocfilter.filter(this.value);">{{ list_zero_out }}</button>
+							{% else %}
+								<button class="form-control" value="{{ zero_out_href }}"
+								        onclick="location = this.value;">{{ list_zero_out }}</button>
+							{% endif %}
+						</label>
+					</div>
+				</div>
+
+				<div class="toolbar">
+					<div class="toolbar-amount toolbar4">
+						<span>{{ results }}</span>
+					</div>
+					<div class="sorter toolbar1">
+						{% if use_layered %}
+							<label for="input-sort">{{ text_sort }}</label>
+							<select id="input-sort" class="form-control" onchange="ocfilter.filter(this.value);">
+								{% for sorts in ajax_sorts %}
+									{% if sorts.value == '%s-%s'|format(sort, order) %}
+										<option value="{{ sorts.href }}"
+										        selected="selected">{{ sorts.text }}</option>
+									{% else %}
+										<option value="{{ sorts.href }}">{{ sorts.text }}</option>
+									{% endif %}
+								{% endfor %}
+							</select>
+						{% else %}
+							<label for="input-sort">{{ text_sort }}</label>
+							<select id="input-sort" class="form-control" onchange="location = this.value;">
+								{% for sorts in sorts %}
+									{% if sorts.value == '%s-%s'|format(sort, order) %}
+										<option value="{{ sorts.href }}"
+										        selected="selected">{{ sorts.text }}</option>
+									{% else %}
+										<option value="{{ sorts.href }}">{{ sorts.text }}</option>
+									{% endif %}
+								{% endfor %}
+							</select>
+						{% endif %}
+					</div>
+					<div class="limiter toolbar2">
+						{% if use_layered %}
+							<label for="input-limit">{{ text_limit }}</label>
+							<select id="input-limit" class="form-control" onchange="ocfilter.filter(this.value);">
+								{% for limits in ajax_limits %}
+									{% if limits.value == limit %}
+										<option value="{{ limits.href }}"
+										        selected="selected">{{ limits.text }}</option>
+									{% else %}
+										<option value="{{ limits.href }}">{{ limits.text }}</option>
+									{% endif %}
+								{% endfor %}
+							</select>
+						{% else %}
+							<label for="input-limit">{{ text_limit }}</label>
+							<select id="input-limit" class="form-control" onchange="location = this.value;">
+								{% for limits in limits %}
+									{% if limits.value == limit %}
+										<option value="{{ limits.href }}"
+										        selected="selected">{{ limits.text }}</option>
+									{% else %}
+										<option value="{{ limits.href }}">{{ limits.text }}</option>
+									{% endif %}
+								{% endfor %}
+							</select>
+						{% endif %}
+					</div>
+				</div>
+				{% if products %}
+					<div class="custom-products">
+						<a href="{{ excel }}" class="excel btn btn-primary" ><i class="fa fa-file-excel-o"></i> {{ text_export }}  </a>
+						<div class="table-responsive">
+							<table class="table table-panel">
+
+								<thead>
+								<tr>
+									<th class="text-center"></th>
+									<th>{{ text_title }}</th>
+									<th class="text-center">{{ text_category }}</th>
+									<th class="text-center">Артикул</th> <!-- Артикул -->
+   						<th class="text-center">Штрихкод</th> <!-- Штрихкод -->
+									<th class="text-center">{{ text_brand }}</th>
+									<th class="text-center">{{ text_pprice }}</th>
+									<th class="text-center">{{ text_availability }}</th>
+									<th class="text-center">{{ text_qnty }}</th>
+									<th class="text-center">{{ text_action }}</th>
+								</tr>
+								</thead>
+
+								<tbody>
+								{% for product in products %}
+									<tr>
+										<td style="min-width: 100px; max-width: 100px; width: 100px;">
+											<img src="{{ product.thumb }}" alt="{{ product.name }}"
+											     title="{{ product.name }}"
+											     class="img-responsive img-cate-{{ product.product_id }}"/>
+										</td>
+										<td>
+											<h4 class="product-name">
+												{{ product.name }}
+											</h4>
+										</td>
+										<td class="text-center">
+											<div>
+												{% for category in product.categories %}
+													<a href="{{ category.href }}">{{ category.name }}</a><br>
+												{% endfor %}
+											</div>
+										</td>
+										<td class="text-center">
+        						{{ product.model }} <!-- Відображення артикула -->
+    						</td>
+    						<td class="text-center">
+        						{{ product.barcode }} <!-- Відображення штрихкоду -->
+    						</td>
+										<td class="text-center">
+											{% if product.manufacturer %}
+												<a href="{{ product.manufacturers }}">{{ product.manufacturer }}</a>
+											{% endif %}
+										</td>
+										<td class="text-center">
+											{% if product.price %}
+												<div class="price">
+													<div class="price-box">
+														{% if not product.special %}
+															{% if product.price != product.discount_price and product.discount_price %}
+																<p class="old-price"><span
+																			class="price"
+																			style="color: #000;">{{ product.price }}</span>
+																</p>
+																<br>
+																<p class="special-price" style="color: red;">
+																	{{ text_discount_price }}
+																	<span class="price"
+																	      style="color: red;">{{ product.discount_price }}</span>
+																</p>
+															{% else %}
+																<p class="regular-price">
+																	<span class="price">{{ product.price }}</span>
+																</p>
+															{% endif %}
+														{% else %}
+															{% if product.price != product.discount_price and product.discount_price %}
+																<p class="old-price">
+																	<span class="price">{{ product.price }}</span>
+																</p>
+																<br>
+																<p class="old-price">
+																	<span class="price"
+																	      style="color: #000;">{{ product.special }}</span>
+																</p>
+																<br>
+																<p class="special-price" style="color: red;">
+																	{{ text_discount_price }}
+																	<span class="price"
+																	      style="color: red;">{{ product.discount_price }}</span>
+																</p>
+															{% else %}
+																<p class="old-price">
+																	<span class="price">{{ product.price }}</span>
+																</p>
+																<br>
+																<p class="special-price">
+																	<span class="price">{{ product.special }}</span>
+																</p>
+															{% endif %}
+														{% endif %}
+														{% if product.tax %}
+															<p class="price-tax"><span
+																		class="price">{{ text_tax }} {{ product.tax }}</span>
+															</p>
+														{% endif %}
+													</div>
+												</div>
+											{% endif %}
+										</td>
+										<td class="text-center">
+											{% if product.quantity > 0 %}
+												<i class="fa fa-thumbs-up" aria-hidden="true"></i>
+											{% else %}
+												<i class="fa fa-thumbs-down" aria-hidden="true"></i>
+											{% endif %}
+											{{ product.quantity }}
+										</td>
+										<td class="text-center">
+
+											<div class="quantity-cart">
+												<div class="quantity-box">
+													<div class="quantity-content">
+														<input type="text" name="quantity"
+														       value="{{ product.minimum }}"
+																{% if product.quantity == 0 %}
+																	disabled
+																{% endif %}
+                                                               size="2"
+                                                               class="form-control input-quantity"/>
+													</div>
+												</div>
+											</div>
+
+										</td>
+										<td class="text-center">
+											<div class="cart">
+												<button type="button" title="{{ button_cart }}"
+														{% if product.quantity != 0 %}
+															onclick="var q = $(this).closest('tr').find('input[name=quantity]').val();
+																	cart.add('{{ product.product_id }}', (q < {{ product.minimum }}) ?
+															{{ product.minimum }} : q);"
+														{% else %}
+															disabled
+														{% endif %}
+												>
+													<span>{{ button_cart }}</span></button>
+											</div>
+										</td>
+									</tr>
+
+									<script>
+										var minimum = {{ product.minimum }};
+										$(".input-quantity").change(function () {
+											if ($(this).val() < minimum) {
+												alert("Minimum Quantity: " + minimum);
+												$(".input-quantity").val(minimum);
+											}
+											//$(this).val()
+										});
+									</script>
+
+								{% endfor %}
+								</tbody>
+
+							</table>
+							<a href="{{ excel }}" class="excel btn btn-primary" ><i class="fa fa-file-excel-o"></i> {{ text_export }}  </a>
+						</div>
+
+					</div>
+					<div class="toolbar toolbar-products toolbar-bottom">
+						{% if use_layered %}
+							<div class="pages ajax_pagination">{{ ajax_pagination }}</div>
+						{% else %}
+							<div class="pages">{{ pagination }}</div>
+						{% endif %}
+						<div class="toolbar-amount"><span>{{ results }}</span></div>
+					</div>
+
+				{% endif %}
+			</div>
+
+			{{ content_bottom }}
+			<hr>
+		</div>
+
+	</div>
+</div>
+<style>
+	.cart button[type=button][disabled] {
+		background: rgb(243, 243, 243) !important;
+		color: rgb(137, 137, 137) !important;
+		cursor: not-allowed;
+	}
+
+	.fa.fa-thumbs-up {
+		color: #98cb00;
+	}
+</style>
+<script>
+// JavaScript для обробки пошуку
+{% if use_layered %}
+	$(document).on('change', '#sku-input', function () {
+		var href = $(this).data('href')
+		ocfilter.filter(href + $(this).val())
+	})
+	{% else %}
+	$(document).on('change', '#sku-input', function () {
+		var href = $(this).data('href')
+		location = href + $(this).val();
+	})
+	{% endif %}
+	{% if use_layered %}
+	$(document).on('change', '#barcode-input', function () {
+		var href = $(this).data('href')
+		ocfilter.filter(href + $(this).val())
+	})
+	{% else %}
+	$(document).on('change', '#barcode-input', function () {
+		var href = $(this).data('href')
+		location = href + $(this).val();
+	})
+	{% endif %}
+
+</script>
+<script>
+	{% if use_layered %}
+	$(document).on('change', '#search-input', function () {
+		var href = $(this).data('href')
+		ocfilter.filter(href + $(this).val())
+	})
+	{% else %}
+	$(document).on('change', '#search-input', function () {
+		var href = $(this).data('href')
+		location = href + $(this).val();
+	})
+	{% endif %}
+	var filter_url = '';
+	$(document).ready(function () {
+		$('#slider-price').slider()
+		$(document).on('slideStop', '#slider-price', function () {
+			filter_url = $('#slider-price').data('href');
+			filter_url += $('#slider-price').val();
+			ocfilter.filter(filter_url);
+		})
+	});
+	$(document).ajaxComplete(function () {
+		$('#slider-price').slider()
+	});
+</script>
+{{ footer }}

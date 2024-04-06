@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>Checkout</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20240405224523">
+	<!-- <link rel="shortcut icon" href="favicon.ico"> -->
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<div class="wrapper">
+		<header>
+			<div class="header_row1">
+				<div class="old-wrapper">
+					<div class="header_row1_items">
+						<div class="header_row1_left">
+							<div class="header_row1_phones">
+								<a href="tel:+380965941814">+38 (096) 594 18 14</a>
+							</div>
+							<div class="header_row1_time">
+								пн-вс 10:00-20:00
+							</div>
+						</div>
+						<div class="header_row1_right">
+							<div class="header_menu">
+								<ul>
+									<div class="header_menu_close" onclick="toggleMenu()">✕</div>
+									<li>
+										<a href="#">Клиентам</a>
+										<ul>
+											<li>
+												<a href="#">Подпункт</a>
+											</li>
+											<li>
+												<a href="#">Подпункт</a>
+											</li>
+											<li>
+												<a href="#">Подпункт</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a href="#">Доставка</a>
+									</li>
+									<li>
+										<a href="#">Оплата</a>
+									</li>
+									<li>
+										<a href="#">Контакты</a>
+									</li>
+								</ul>
+							</div>
+							<div class="header_lang">
+								<select name="choice">
+									<option value="ua" selected>Укр</option>
+									<option value="en">En</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="header_row2">
+				<div class="old-wrapper">
+					<div class="header_items">
+						<div class="header_left">
+							<div class="header_cat">
+								<div class="header_cat_btn">
+									<span><picture><source srcset="img/cat_btn_ico.webp" type="image/webp"><img src="img/cat_btn_ico.png" tppabs="http://develov2.beget.teimg/cat_btn_ico.png" alt="icon"></picture></span>
+									<span>Каталог товаров</span>
+									<span><picture><source srcset="img/arrow_down_white.webp" type="image/webp"><img src="img/arrow_down_white.png" tppabs="http://develov2.beget.teimg/arrow_down_white.png" alt="icon"></picture></span>
+								</div>
+								<div class="header_cat_menu">
+									<ul>
+										<li>
+											<a href="#">Категория 1</a>
+										</li>
+										<li>
+											<a href="#">Категория 2</a>
+										</li>
+										<li>
+											<a href="#">Категория 3</a>
+										</li>
+										<li>
+											<a href="#">Категория 4</a>
+										</li>
+										<li>
+											<a href="#">Категория 5</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="header_search searchs2">
+								<div class="header_search_ico">
+									<picture><source srcset="img/search.webp" type="image/webp"><img src="img/search.png" tppabs="http://develov2.beget.teimg/search.png" alt="icon"></picture>
+								</div>
+								<div class="header_search_input">
+									<input type="text" placeholder="Поиск">
+								</div>
+								<div class="header_search_submit">
+									<input type="submit">
+								</div>
+							</div>
+						</div>
+						<div class="header_center">
+							<div class="header_logo">
+								<a href="index.htm" tppabs="http://develov2.beget.tech/">
+									<picture><source srcset="img/logo.webp" type="image/webp"><img src="img/logo.png" tppabs="http://develov2.beget.teimg/logo.png" alt="logo"></picture>
+								</a>
+								<div class="header_logo_flag">
+									<picture><source srcset="img/ua.webp" type="image/webp"><img src="img/ua.png" tppabs="http://develov2.beget.teimg/ua.png" alt="flag"></picture>
+								</div>
+							</div>
+						</div>
+						<div class="header_right">
+							<a href="#" class="header_cart">
+								<div class="header_cart_ico">
+									<picture><source srcset="img/cart.webp" type="image/webp"><img src="img/cart.png" tppabs="http://develov2.beget.teimg/cart.png" alt="icon"></picture>
+								</div>
+
+								<div class="header_cart_content">
+									<div class="header_cart_title">В корзине</div>
+									<div class="header_cart_val">₴ 378 603.05</div>
+								</div>
+								<div class="header_cart_count">
+									<span>5</span>
+								</div>
+							</a>
+							<div class="header_links">
+								<div class="header_compare">
+									<a href="#">
+										<picture><source srcset="img/sravn.webp" type="image/webp"><img src="img/sravn.png" tppabs="http://develov2.beget.teimg/sravn.png" alt="icon"></picture>
+									</a>
+								</div>
+								<div class="header_wish">
+									<a href="#">
+										<picture><source srcset="img/whish.webp" type="image/webp"><img src="img/whish.png" tppabs="http://develov2.beget.teimg/whish.png" alt="icon"></picture>
+										<span class="header_wish_count">102</span>
+									</a>
+								</div>
+							</div>
+							<div class="header_menu_btn" id="menuBtn">
+
+							</div>
+							<div class="header_user">
+								<a href="#">
+									<picture><source srcset="img/user.webp" type="image/webp"><img src="img/user.png" tppabs="http://develov2.beget.teimg/user.png" alt="icon"></picture>
+								</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="searchs1">
+			<div class="search-input-container">
+				<div class="header_search_ico ico">
+					<picture><source srcset="img/search.webp" type="image/webp"><img src="img/search.png" alt="icon" /></picture>
+				</div>
+				<input type="text" placeholder="Поиск" class="search-input" />
+			</div>
+			<div class="header_search_submit search-submit-container">
+				<input type="submit" class="search-submit" />
+			</div>
+		</div>
+		<main class="page">
+			<div class="s1">
+				<div class="old-wrapper">
+					<div class="s1_top_row">
+						<ul>
+							<li>
+								<a href="#">Главная страница</a>
+							</li>
+							<li>
+								<a href="#">Оформление заказа</a>
+							</li>
+						</ul>
+					</div>
+					<div class="general_order">
+						<div class="decor_order">
+							<h2>Оформление заказа</h2>
+							<h3><b>Контактная информация</b></h3>
+							<div class="form_contact">
+								<input type="text" name="name" placeholder="Ваше ФИО" required>
+								<input type="tel" name="phone" pattern="\+380\([0-9]{3}\)[0-9]{3}\s[0-9]{2}\s[0-9]{2}" placeholder="+380 (___) ___ __ __" required>
+							</div>
+							<div style="border-bottom: 1px solid  rgba(143, 143, 143, 0.3); margin-top: 20px;"></div>
+							<h3><b>Доставка</b></h3>
+							<select class="select_town">
+								<option value="" disabled selected hidden>Выберите город</option>
+								<option value="value1">Вариант 1</option>
+								<option value="value2">Вариант 2</option>
+								<option value="value3">Вариант 3</option>
+							</select>
+							<form class="rad_but">
+								<input type="radio" name="option1" value="option1" checked>
+								<label for="option1">Адресная доставка <b>Новой Почты</b></label><br>
+								<input type="radio" name="option1" value="option2">
+								<label for="option2">В отделение <b>Новой Почты</b></label><br>
+							</form>
+							<div class="form_contact">
+								<input type="text" name="street" placeholder="Улица" required>
+								<input type="text" name="house" placeholder="Дом" required>
+							</div>
+							<div style="border-bottom: 1px solid  rgba(143, 143, 143, 0.3); margin-top: 20px;"></div>
+							<h3><b>Способы оплаты</b></h3>
+							<form class="rad_but">
+								<input type="radio" name="option1" value="option1" checked>
+								<label for="option1">На карту <b>Приват Банка</b></label><br>
+								<input type="radio" name="option1" value="option2">
+								<label for="option2">Наличными при получении</label><br>
+							</form>
+							<div style="border-bottom: 1px solid  rgba(143, 143, 143, 0.3); margin-top: 20px;"></div>
+							<div class="button_order">
+								<button><b>Подтвердить заказ</b></button>
+							</div>
+						</div>
+						<div class="shop_basket">
+							<div class="shop_items">
+								<h2>Моя корзина</h2>
+								<div class="shop_item">
+									<div class="shop_item_image">
+										<picture><source srcset="img/product1.webp" type="image/webp"><img src="img/product1.png" tppabs="http://develov2.beget.teimg/product1.png" alt="image"></picture>
+									</div>
+									<div class="shop_item_content">
+										<div class="shop_item_title">
+											Садовая тележка самоходная аккумуляторная Greenworks G40GC
+										</div>
+										<dic class="shop_sale">
+											<p>647 </p><span>Ваша скидка - 647 ₴</span>
+											<div class="shop_item_price">
+												3 671 ₴
+											</div>
+									</div>
+									<div class="counter">
+										<button class="decrement">-</button>
+										<span class="value">452</span>
+										<button class="increment">+</button>
+									</div>
+									<div class="general_item_price">
+										157 571 ₴
+									</div>
+								</div>
+								<div style="border-bottom: 1px solid rgba(143, 143, 143, 0.3); margin-top: 20px;"></div>
+								<div class="shop_item">
+									<div class="shop_item_image">
+										<picture><source srcset="img/product1.webp" type="image/webp"><img src="img/product1.png" tppabs="http://develov2.beget.teimg/product1.png" alt="image"></picture>
+									</div>
+									<div class="shop_item_content">
+										<div class="shop_item_title">
+											Садовая тележка самоходная аккумуляторная Greenworks G40GC
+										</div>
+										<dic class="shop_sale">
+											<p>647 </p><span>Ваша скидка - 647 ₴</span>
+											<div class="shop_item_price">
+												15 671 ₴
+											</div>
+									</div>
+									<div class="counter">
+										<button class="decrement">-</button>
+										<span class="value">52</span>
+										<button class="increment">+</button>
+									</div>
+									<div class="general_item_price">
+										1547 571 ₴
+									</div>
+								</div>
+								<div class="general_price">
+									<div class="general_title">
+										<h2>Итого к оплате</h2>
+									</div>
+									<div class="general_price_num">
+										<h2>255 169 ₴</h2>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer>
+			<div class="old-wrapper">
+				<div class="footer_content">
+					<div class="footer_row1">
+						<div class="footer_row1_item">
+							<div class="footer_row1_item_title">
+								Компания
+							</div>
+							<div class="footer_row1_item_menu">
+								<ul>
+									<li>
+										<a href="#">О нас</a>
+									</li>
+									<li>
+										<a href="#">Контакты</a>
+									</li>
+									<li>
+										<a href="#">Блог</a>
+									</li>
+									<li>
+										<a href="#">Договор оферты</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="footer_row1_item">
+							<div class="footer_row1_item_title">
+								Каталог товаров
+							</div>
+							<div class="footer_row1_item_menu">
+								<ul>
+									<li>
+										<a href="#">Системы автоматического полива</a>
+									</li>
+									<li>
+										<a href="#">Полиэтиленовые трубы и фитинги</a>
+									</li>
+									<li>
+										<a href="#">Капельный полив и аксессуары</a>
+									</li>
+									<li>
+										<a href="#">Насосное оборудование</a>
+									</li>
+									<li>
+										<a href="#">Садовая техника</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="footer_row1_item">
+							<div class="footer_row1_item_title">
+								Клиентам
+							</div>
+							<div class="footer_row1_item_menu">
+								<ul>
+									<li>
+										<a href="#">Бренды</a>
+									</li>
+									<li>
+										<a href="#">Доставка</a>
+									</li>
+									<li>
+										<a href="#">Оплата</a>
+									</li>
+									<li>
+										<a href="#">Оптовикам</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="footer_row1_item">
+							<div class="footer_row1_item_title">
+								Консультация и заказ
+							</div>
+							<div class="f_phone">
+								<a href="tel:+380965941814">+38 (096) 594 18 14</a>
+							</div>
+							<p>График работы: Пн-Вс 10:00-20:00</p>
+							<p><a href="mailto:info@ukrpoliv.com">info@ukrpoliv.com</a></p>
+							<p>Киев, Григоренка 20</p>
+							<div class="social">
+								<div class="social_title">Мы в соцсетях</div>
+								<div class="social_items">
+									<a href="#" target="_blank">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+											<path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" />
+										</svg>
+									</a>
+									<a href="#" target="_blank">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+											<path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z" />
+										</svg>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="footer_row2">
+						<div class="f_copy">
+							© 2022 - 2024 Интернет-магазин UKRPOLIV. Все права защищены.
+						</div>
+						<div class="f_logo">
+							<a href="index.htm" tppabs="http://develov2.beget.tech/">
+								<picture><source srcset="img/logo_f.webp" type="image/webp"><img src="img/logo_f.png" tppabs="http://develov2.beget.teimg/logo_f.png" alt="logo"></picture>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<script src="js/app.min.js?_v=20240405224523"></script>
+</body>
+
+</html>

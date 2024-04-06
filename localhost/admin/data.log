@@ -1,0 +1,101 @@
+Array
+(
+    [product_description] => Array
+        (
+            [3] => Array
+                (
+                    [name] => ActivLab - BCAA Xtra 800g pear
+                    [description] => 
+                    [meta_title] => ActivLab - BCAA Xtra 800g pear
+                    [meta_description] => 
+                    [meta_keyword] => 
+                    [tag] => 
+                )
+
+            [4] => Array
+                (
+                    [name] => ActivLab - BCAA Xtra 800g pear
+                    [description] => 
+                    [meta_title] => ActivLab - BCAA Xtra 800g pear
+                    [meta_description] => 
+                    [meta_keyword] => 
+                    [tag] => 
+                )
+
+        )
+
+    [model] => 85867
+    [barcode] => 
+    [expiry_date] => 
+    [sku] => 
+    [upc] => 
+    [ean] => 
+    [jan] => 
+    [isbn] => 
+    [mpn] => 
+    [location] => 
+    [price] => 16.8500
+    [tax_class_id] => 0
+    [quantity] => 0
+    [minimum] => 0
+    [subtract] => 1
+    [stock_status_id] => 7
+    [shipping] => 1
+    [date_available] => 2018-10-24
+    [length] => 0.00000000
+    [width] => 0.00000000
+    [height] => 0.00000000
+    [length_class_id] => 1
+    [weight] => 0.00000000
+    [weight_class_id] => 1
+    [status] => 1
+    [sort_order] => 1
+    [manufacturer] => ActivLab
+    [manufacturer_id] => 8
+    [category] => 
+    [product_category] => Array
+        (
+            [0] => 110
+        )
+
+    [filter] => 
+    [product_filter] => Array
+        (
+            [0] => 29
+        )
+
+    [product_store] => Array
+        (
+            [0] => 0
+        )
+
+    [download] => 
+    [related] => 
+    [option] => 
+    [image] => catalog/ActivLab - BCAA Xtra 800g.jpg
+    [points] => 0
+    [product_reward] => Array
+        (
+            [1] => Array
+                (
+                    [points] => 
+                )
+
+        )
+
+    [product_seo_url] => Array
+        (
+            [0] => Array
+                (
+                    [3] => activlab-bcaa-xtra-800g-pear
+                    [4] => activlab-bcaa-xtra-800g-peara-ua
+                )
+
+        )
+
+    [product_layout] => Array
+        (
+            [0] => 
+        )
+
+)

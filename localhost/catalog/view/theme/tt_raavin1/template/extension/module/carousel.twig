@@ -1,0 +1,19 @@
+<div class="brand-container">
+	<div class="container">
+		<div class="row">
+			{% for banner in banners %}
+				<div class="col-md-3" style="margin-bottom: 30px;">
+					{% if banner.link %}
+						<a href="{{ banner.link }}">
+							<img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive"
+							     style="margin: 0 auto;display: block;"/>
+						</a>
+					{% else %}
+						<img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive"
+						     style="margin: 0 auto;display: block;"/>
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>

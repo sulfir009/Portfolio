@@ -1,0 +1,15 @@
+2024-02-24 17:21:51, Изменена минимальная цена ${title} на {price}
+2024-02-24 17:24:22, Изменена минимальная цена ${title} на {price}
+2024-02-24 17:25:10, Цена для Volcano Door установлена на 0.62 USD.
+2024-02-24 17:26:13, Цена для Volcano Door установлена на 0.61 USD.
+2024-02-24 17:27:14, Цена для Volcano Door установлена на 0.6 USD.
+2024-02-24 17:28:16, Цена для Volcano Door установлена на 0.59 USD.
+2024-02-24 17:29:19, Цена для Volcano Door установлена на 0.58 USD.
+2024-02-24 18:01:31, Price fo Volcano Door setup 0.57 USD.
+2024-02-24 18:01:33, Price fo Volcano Furnace setup 0.49 USD.
+2024-02-24 18:01:39, Price fo Volcano Furnace setup 0.48 USD.
+2024-02-24 18:01:41, Price fo Volcano Door setup 0.5599999999999999 USD.
+2024-02-24 18:02:05, Price fo Volcano Door setup 0.55 USD.
+2024-02-24 18:02:07, Price fo Volcano Furnace setup 0.47 USD.
+2024-02-24 19:16:14, Added to ignore list: v
+2024-02-24 19:21:38, Removed from ignore list: v

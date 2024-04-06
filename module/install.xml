@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+    <name>Discounts Module</name>
+    <code>discounts_module</code>
+    <version>1.0.2</version>
+    <author>Your Name</author>
+    <link>http://www.yourwebsite.com</link>
+
+    <!-- Paths for copying files -->
+    <file path="admin/controller/extension/module/discounts.php">
+        <operation>
+            <copy>
+                <from><![CDATA[upload/admin/controller/extension/module/discounts.php]]></from>
+                <to><![CDATA[admin/controller/extension/module/discounts.php]]></to>
+            </copy>
+        </operation>
+    </file>
+    <file path="admin/model/extension/module/discounts.php">
+        <operation>
+            <copy>
+                <from><![CDATA[upload/admin/model/extension/module/discounts.php]]></from>
+                <to><![CDATA[admin/model/extension/module/discounts.php]]></to>
+            </copy>
+        </operation>
+    </file>
+    <file path="admin/view/template/extension/module/discounts_list.twig">
+        <operation>
+            <copy>
+                <from><![CDATA[upload/admin/view/template/extension/module/discounts_list.twig]]></from>
+                <to><![CDATA[admin/view/template/extension/module/discounts_list.twig]]></to>
+            </copy>
+        </operation>
+    </file>
+    <file path="admin/view/template/extension/module/discounts_form.twig">
+        <operation>
+            <copy>
+                <from><![CDATA[upload/admin/view/template/extension/module/discounts_form.twig]]></from>
+                <to><![CDATA[admin/view/template/extension/module/discounts_form.twig]]></to>
+            </copy>
+        </operation>
+    </file>
+    <file path="admin/language/en-gb/extension/module/discounts.php">
+        <operation>
+            <copy>
+                <from><![CDATA[upload/admin/language/en-gb/extension/module/discounts.php]]></from>
+                <to><![CDATA[admin/language/en-gb/extension/module/discounts.php]]></to>
+            </copy>
+        </operation>
+    </file>
+    <file path="admin/language/ru-ru/extension/module/discounts.php">
+        <operation>
+            <copy>
+                <from><![CDATA[upload/admin/language/ru-ru/extension/module/discounts.php]]></from>
+                <to><![CDATA[admin/language/ru-ru/extension/module/discounts.php]]></to>
+            </copy>
+        </operation>
+    </file>
+
+    <install>
+        <sql><![CDATA[
+            CREATE TABLE IF NOT EXISTS `oc_discounts` (
+              `discount_id` INT(11) NOT NULL AUTO_INCREMENT,
+              `name` VARCHAR(255) NOT NULL,
+              `discount_percent` DECIMAL(15,2) NOT NULL,
+              `start_date` DATETIME NULL,
+              `end_date` DATETIME NULL,
+              PRIMARY KEY (`discount_id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+            CREATE TABLE IF NOT EXISTS `oc_discounts_to_categories_brands` (
+              `discount_id` INT(11) NOT NULL,
+              `category_id` INT(11) NOT NULL,
+              `brand_id` INT(11) NOT NULL,
+              PRIMARY KEY (`discount_id`, `category_id`, `brand_id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+        ]]></sql>
+    </install>
+
+    <uninstall>
+        <sql><![CDATA[
+            DROP TABLE IF EXISTS `oc_discounts`;
+            DROP TABLE IF EXISTS `oc_discounts_to_categories_brands`;
+        ]]></sql>
+    </uninstall>
+</modification>
