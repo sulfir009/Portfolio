@@ -9,15 +9,15 @@
     <link href="css2-family=Manrope-wght@200..800&family=Open+Sans-ital,wght@0,300..800;1,300..800&display=swap.css" tppabs="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="slick.css" tppabs="http://develov2.beget.tech/slick/slick.css"/>
     <link href="styles.css" tppabs="http://develov2.beget.tech/css/styles.css" rel="stylesheet" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.js"></script>
 </head>
 <body>
-<script>
-
-</script>
     <header>  
         <div class="header_row1">
             <div class="wrapper">
                 <div class="header_row1_items">
+                    
                     <div class="header_row1_left">
                         <div class="header_row1_phones">
                             <a href="tel:+380965941814">+38 (096) 594 18 14</a>
@@ -29,6 +29,7 @@
                     <div class="header_row1_right">
                         <div class="header_menu">
                             <ul>
+                                <div class="header_menu_close" onclick="toggleMenu()">✕</div>
                                 <li>
                                     <a href="#">Клиентам</a>
                                     <ul>
@@ -50,7 +51,7 @@
                                     <a href="#">Оплата</a>
                                 </li>
                                 <li>
-                                    <a href="#">Контакты</a>
+                                    <a href="#" style="color: rgba(0, 164, 70, 0.95);text-decoration: underline;">Контакты</a>
                                 </li>
                             </ul>
                         </div>
@@ -94,7 +95,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="header_search">
+                        <div class="header_search searchs2">
                             <div class="header_search_ico">
                                 <img src="search.png" tppabs="http://develov2.beget.tech/img/search.png" alt="icon">
                             </div>
@@ -121,6 +122,7 @@
                             <div class="header_cart_ico">
                                 <img src="cart.png" tppabs="http://develov2.beget.tech/img/cart.png" alt="icon">
                             </div>
+                            
                             <div class="header_cart_content">
                                 <div class="header_cart_title">В корзине</div>
                                 <div class="header_cart_val">₴ 378 603.05</div>
@@ -142,184 +144,852 @@
                                 </a>
                             </div>
                         </div>
+                        <div class="header_menu_btn" id="menuBtn">
+
+                        </div>
                         <div class="header_user">
                             <a href="#">
                                 <img src="user.png" tppabs="http://develov2.beget.tech/img/user.png" alt="icon">
                             </a>
                         </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </header> 
-<!-- Хлібні крихти -->
-<nav aria-label="breadcrumb" class="breadcrumb-container">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">Головна сторінка</a></li>
-    <li class="breadcrumb-item"><a href="#">Дрелі</a></li>
-    <li class="breadcrumb-item active" aria-current="page">DeWalt</li>
-  </ol>
-</nav>
-<div class="container">
-<div class="filters">
-<div class="price-filter">
-    <h3 class="price-filter-title" onclick="togglePriceFilter()">Ціна (грн)</h3>
-    <div class="price-range-inputs">
-        <input type="number" id="min-price" class="price-input" value="0" aria-label="Мінімальна ціна">
-        <span class="price-range-dash">-</span>
-        <input type="number" id="max-price" class="price-input" value="21000" aria-label="Максимальна ціна">
-        <button class="price-range-ok">OK</button>
+    <div class = "s1">
+        <div class = "wrapper">
+            <div class = "s1_top_row">
+                <ul>
+                    <li>
+                        <a href="#">Главная страница</a>
+                    </li>
+                    <li>
+                        <a href="#">Дрели</a>
+                    </li>
+                    <li>
+                        <a href="#">DeWalt</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="price-slider">
-        <input type="range" min="0" max="21000" value="0" class="price-range" id="lowerPrice" aria-label="Мінімальна ціна слайдер">
-    </div>
-</div>
-<!-- Фільтр Виробник -->
-<div class="filters">
-<div class="price-filter">
-    <h3 class="price-filter-title" onclick="toggleFilter('manufacturerFilter')">Виробник</h3>
-    <div class="filter-content" id="manufacturerFilter">
-        <!-- Чекбокси виробників -->
-    </div>
-</div>
-</div>
-
-<!-- Фільтр Захист сухого ходу -->
-<div class="filters">
-<div class="price-filter">
-    <h3 class="price-filter-title" onclick="toggleFilter('dryProtectionFilter')">Захист сухого ходу</h3>
-    <div class="filter-content" id="dryProtectionFilter">
-        <!-- Чекбокси захисту сухого ходу -->
-    </div>
-</div>
-</div>
-
-<!-- Інші фільтри -->
-<!-- ... -->
-
-<!-- Кнопка "Очистити всі фільтри" -->
-<div class="filter-clear">
-    <button onclick="clearFilters()">Очистити всі фільтри</button>
-</div>
-</div>
-<div class="products">
-        <!-- Товари тут -->
-
-</div>
-</div>
-
-
-    
-
-<footer>
-        <div class="wrapper">
-            <div class="footer_content">
-                <div class="footer_row1">
-                    <div class="footer_row1_item">
-                        <div class="footer_row1_item_title">
-                            Компания
-                        </div>
-                        <div class="footer_row1_item_menu">
-                            <ul>
-                                <li>
-                                    <a href="#">О нас</a>
-                                </li>
-                                <li>
-                                    <a href="#">Контакты</a>
-                                </li>
-                                <li>
-                                    <a href="#">Блог</a>
-                                </li>
-                                <li>
-                                    <a href="#">Договор оферты</a>
-                                </li>
-                            </ul>
-                        </div>
+    <div class = "conteiner">
+        <div class = "s2">
+            <div class = "wrapper">
+                <div class = "s2_price_reg">
+                    <div class = "title_price">
+                        <h2><b>Цена(грн)</b></h2>
+                        <button class="decrement">—</button>
                     </div>
-                    <div class="footer_row1_item">
-                        <div class="footer_row1_item_title">
-                            Каталог товаров
-                        </div>
-                        <div class="footer_row1_item_menu">
-                            <ul>
-                                <li>
-                                    <a href="#">Системы автоматического полива</a>
-                                </li>
-                                <li>
-                                    <a href="#">Полиэтиленовые трубы и фитинги</a>
-                                </li>
-                                <li>
-                                    <a href="#">Капельный полив и аксессуары</a>
-                                </li>
-                                <li>
-                                    <a href="#">Насосное оборудование</a>
-                                </li>
-                                <li>
-                                    <a href="#">Садовая техника</a>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class = "s2_input_price">
+                        <input  type = "text" name = "min_price" placeholder="0">
+                        <span class="value">-</span>
+                        <input  type = "text" name = "max_price" placeholder="21 000">
+                        <button class = "ok_price">OK</button>
                     </div>
-                    <div class="footer_row1_item">
-                        <div class="footer_row1_item_title">
-                            Клиентам
-                        </div>
-                        <div class="footer_row1_item_menu">
-                            <ul>
-                                <li>
-                                    <a href="#">Бренды</a>
-                                </li>
-                                <li>
-                                    <a href="#">Доставка</a>
-                                </li>
-                                <li>
-                                    <a href="#">Оплата</a>
-                                </li>
-                                <li>
-                                    <a href="#">Оптовикам</a>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class = "s2_slider">
+                        <div id ="slider"></div>
+                        <script>
+                            var slider = document.getElementById('slider');
+                            var sliderValueMin = document.getElementById('sliderValueMin');
+                            var sliderValueMax = document.getElementById('sliderValueMax');
+                        
+                            noUiSlider.create(slider, {
+                                start: [20, 80],
+                                connect: true,
+                                range: {
+                                    'min': 0,
+                                    'max': 100
+                                }
+                            });
+                        
+                            slider.noUiSlider.on('update', function (values, handle) {
+                                var value = values[handle];
+                                if (handle == 0) {
+                                    sliderValueMin.value = value;
+                                } else {
+                                    sliderValueMax.value = value;
+                                }
+                            });
+                        </script>
                     </div>
-                    <div class="footer_row1_item">
-                        <div class="footer_row1_item_title">
-                            Консультация и заказ
+                    <div style="border-bottom: 1px solid rgba(143, 143, 143, 0.3); margin-top: 20px; width: 95%;"></div> 
+                </div>
+            </div>
+            <div class = "s3">
+                <div class = "wrapper">
+                    <div class = "s3_producer">
+                        <div class = "title_price">
+                            <h2><b>Производитель</b></h2>
+                            <button class="decrement">—</button>
                         </div>
-                        <div class="f_phone">
-                            <a href="tel:+380965941814">+38 (096) 594 18 14</a>
-                        </div>
-                        <p>График работы: Пн-Вс 10:00-20:00</p>
-                        <p><a href="mailto:info@ukrpoliv.com">info@ukrpoliv.com</a></p>
-                        <p>Киев, Григоренка 20</p>
-                        <div class="social">
-                            <div class="social_title">Мы в соцсетях</div>
-                            <div class="social_items">
-                                <a href="#" target="_blank">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg>
-                                </a>
-                                <a href="#" target="_blank">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z"/></svg>
-                                </a>
+                        <div class = "checkbox_producer">
+                            <div class="checkbox_container">
+                                <input type = "checkbox" name = "makita"> 
+                                <label for = "makita">Makita</label>
+                            </div>
+                            <div class="checkbox_container">
+                                <input type = "checkbox" name = "deWalt"> 
+                                <label for = "deWalt">DeWalt</label>
+                            </div>
+                            <div class="checkbox_container">
+                                <input type = "checkbox" name = "milwaukee"> 
+                                <label for = "milwaukee">Milwaukee</label>
+                            </div>
+                            <div class="checkbox_container">
+                                <input type = "checkbox" name = "bosch"> 
+                                <label for = "bosch">Bosch</label>
+                            </div>
+                            <div class="checkbox_container">
+                                <input type = "checkbox" name = "faithfull_power_plus"> 
+                                <label for = "faithfull_power_plus">Faithfull_Power_Plus</label>
                             </div>
                         </div>
+                        <div style="border-bottom: 1px solid rgba(143, 143, 143, 0.3); margin-top: 20px;"></div> 
                     </div>
                 </div>
-                <div class="footer_row2">
-                    <div class="f_copy">
-                         © 2022 - 2024 Интернет-магазин UKRPOLIV.  Все права защищены. 
+            </div>
+            <div class = "s4">
+                <div class = "wrapper">
+                    <div class = "s4_secur">
+                        <div class = "title_price">
+                            <h2><b>Защита сухого хода</b></h2>
+                            <button class="decrement">—</button>
+                        </div>
+                        <div class = "checkbox_producer">
+                            <div class="checkbox_container">
+                                <input type = "checkbox" name = "exists"> 
+                                <label for = "exists">Есть</label>
+                            </div>
+                            <div class="checkbox_container">
+                                <input type = "checkbox" name = "exists_no"> 
+                                <label for = "exists_no">Нет</label>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid rgba(143, 143, 143, 0.3); margin-top: 20px;"></div> 
                     </div>
-                    <div class="f_logo">
-                        <a href="index.htm" tppabs="http://develov2.beget.tech/">
-                            <img src="logo_f.png" tppabs="http://develov2.beget.tech/img/logo_f.png" alt="logo">
-                        </a>
+                </div>
+            </div>
+            <div class = "s8">
+                <div class = "wrapper">
+                    <div class = "s8_other_titels">
+                        <div class = "title_price">
+                            <h2><b>Диаметр патрубка, дюйм</b></h2>
+                            <button class="decrement">+</button>
+                        </div>
+                        <div style="border-bottom: 1px solid rgba(143, 143, 143, 0.3); margin-top: 15px;"></div> 
+                        <div class = "title_price">
+                            <h2><b>Тип воды</b></h2>
+                            <button class="decrement">+</button>
+                        </div>
+                        <div style="border-bottom: 1px solid rgba(143, 143, 143, 0.3);"></div> 
+                        <div class = "title_price">
+                            <h2><b>Мощность, кВТ</b></h2>
+                            <button class="decrement">+</button>
+                        </div>
+                        <div style="border-bottom: 1px solid rgba(143, 143, 143, 0.3);"></div> 
+                        <div class = "s8_button_clean">
+                            <button>ОЧИСТИТЬ ВСЕ ФИЛЬТРЫ</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </footer>
-<script src="jquery-3.1.1.min.js" tppabs="http://develov2.beget.tech/js/jquery-3.1.1.min.js"></script>  
-<script src="slick.min.js" tppabs="http://develov2.beget.tech/slick/slick.min.js"></script>  
-<script src="js.js" tppabs="http://develov2.beget.tech/js/js.js"></script>
-</body>
-</html>
-
+        <div class = "s2_part_2">
+            <div class = "s1_top">
+                <ul>
+                    <li>
+                        <a href="#"><span style="color: red;">&#10006;</span> Очистить все фильтры</a>
+                    </li>
+                    <li>
+                        <a href="#">&#10006; Цена</a>
+                    </li>
+                    <li>
+                        <a href="#">&#10006; Производитель</a>
+                    </li>
+                </ul>
+            </div>
+            <div style="border-bottom: 1px solid rgba(143, 143, 143, 0.3); margin-top: 20px;"></div> 
+            <div class = "s1_bottom">
+                <div class = "filter">
+                    <input type="text" value="По низшей цене" readonly><span><b>&#8645;</b></span>
+                </div>
+                <div class = "page">
+                    <a href="#"> Страница товара</a>
+                    <a href="#">12</a>
+                    <a href="#"><b>24</b></a>
+                    <a href="#">36</a>
+                    <a href="#">48</a>
+                    <a href="#">96</a>
+                </div>
+            </div>
+        <div class="product_item_wr_catal">
+                <div class="product_item_catal">
+                        <div class="product_item_image">
+                            <div class="product_item_hot">hot</div>
+                            <img src="product3.png" tppabs="http://develov2.beget.tech/img/product3.png" alt="image">
+                        </div>
+                        <div class="product_item_content">
+                            <div class="product_item_title">
+                                Газонокосилка электрическая Greenworks GLM1241
+                            </div>
+                            <div class="product_item_row">
+                                <div class="product_item_row_item">
+                                    <div class="nalich1">
+                                        <span><img src="podzakaz.png" tppabs="http://develov2.beget.tech/img/podzakaz.png" alt="icon"></span>
+                                        <span>Под заказ</span>
+                                    </div>
+                                </div>
+                                <div class="product_item_row_item">
+                                    Код 3022055
+                                </div>
+                            </div>
+                            <div class="product_item_row">
+                                <div class="product_item_row_item">
+                                    <img src="stars.png" tppabs="http://develov2.beget.tech/img/stars.png" alt="image">
+                                </div>
+                                <div class="product_item_row_item">
+                                    <span><img src="otz.png" tppabs="http://develov2.beget.tech/img/otz.png" alt="image"></span>
+                                    <span>0 отзывов</span>
+                                </div>
+                            </div>
+                            <div class="product_item_price1">
+                                8 999 ₴
+                            </div>
+                            <div class="product_item_btns">
+                                <div class="product_item_buy_gray">
+                                    <a href="#">
+                                        <span>Купить</span>
+                                        <span ><img src="cart_white.png" tppabs="http://develov2.beget.tech/img/cart_white.png" alt="icon"></span>
+                                    </a>
+                                </div>
+                                <div class="product_item_wish">
+                                    <a href="#">
+                                        <img src="wh1.png" tppabs="http://develov2.beget.tech/img/wh1.png" alt="icon">
+                                    </a>
+                                </div>
+                                <div class="product_item_comp">
+                                    <a href="#">
+                                        <img src="comp1.png" tppabs="http://develov2.beget.tech/img/comp1.png" alt="icon">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="product_item_desc_catal">
+                                <div class="content">
+                                    <p><strong>Текст с фильтра</strong></p>
+                                    <ul>
+                                        <li>Текст с фильтра</li>
+                                        <li>Емкость бака - 7,5 л</li>
+                                        <li>Производительность - до 2,2 л/мин</li>
+                                        <li>Удлинитель - 72 см</li>
+                                        <li>Работа от аккумулятора 24 В</li>
+                                        <li>Максимальное давление: 8.5 бар</li>
+                                        <li>Уровень шума: <78 дБ</li>
+                                        <li>Размеры (Д×Ш×В): 280×200×600 мм</li>
+                                        <li>Вес: 2.9 кг</li>
+                                        <li>Гарантия - 3 года</li>
+                                    </ul>
+                                </div>
+                            </div>
+                </div>
+                <div class="product_item_catal">
+                    <div class="product_item_image">
+                        <div class="product_item_hot">hot</div>
+                        <img src="product2.png" tppabs="http://develov2.beget.tech/img/product2.png" alt="image">
+                    </div>
+                    <div class="product_item_content">
+                        <div class="product_item_title">
+                            Опрыскиватель садовый аккумуляторный Greenworks GSP1250
+                        </div>
+                        <div class="product_item_row">
+                            <div class="product_item_row_item">
+                                <div class="nalich1">
+                                    <span><img src="nasklade.png" tppabs="http://develov2.beget.tech/img/nasklade.png" alt="icon"></span>
+                                    <span>На складе</span>
+                                </div>
+                            </div>
+                            <div class="product_item_row_item">
+                                Код 15
+                            </div>
+                        </div>
+                        <div class="product_item_row">
+                            <div class="product_item_row_item">
+                                <img src="stars.png" tppabs="http://develov2.beget.tech/img/stars.png" alt="image">
+                            </div>
+                            <div class="product_item_row_item">
+                                <span><img src="otz.png" tppabs="http://develov2.beget.tech/img/otz.png" alt="image"></span>
+                                <span>54 отзывов</span>
+                            </div>
+                        </div>
+                        <div class="product_item_price2">
+                            <div class="product_item_price2_row">
+                                <span><del>647</del></span>
+                                <span>Ваша скидка - 647 грн</span>
+                            </div>
+                            <div class="product_item_price2_val">3 671 ₴</div>
+                        </div>
+                        <div class="product_item_btns">
+                            <div class="product_item_buy">
+                                <a href="#">
+                                    <span>Купить</span>
+                                    <span><img src="cart_white.png" tppabs="http://develov2.beget.tech/img/cart_white.png" alt="icon"></span>
+                                </a>
+                            </div>
+                            <div class="product_item_wish">
+                                <a href="#">
+                                    <img src="wh1.png" tppabs="http://develov2.beget.tech/img/wh1.png" alt="icon">
+                                </a>
+                            </div>
+                            <div class="product_item_comp">
+                                <a href="#">
+                                    <img src="comp1.png" tppabs="http://develov2.beget.tech/img/comp1.png" alt="icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="product_item_desc_catal">
+                            <div class="content">
+                                <p><strong>Текст с фильтра</strong></p>
+                                <ul>
+                                    <li>Текст с фильтра</li>
+                                    <li>Емкость бака - 7,5 л</li>
+                                    <li>Производительность - до 2,2 л/мин</li>
+                                    <li>Удлинитель - 72 см</li>
+                                    <li>Работа от аккумулятора 24 В</li>
+                                    <li>Максимальное давление: 8.5 бар</li>
+                                    <li>Уровень шума: <78 дБ</li>
+                                    <li>Размеры (Д×Ш×В): 280×200×600 мм</li>
+                                    <li>Вес: 2.9 кг</li>
+                                    <li>Гарантия - 3 года</li>
+                                </ul>
+                            </div>
+                        </div>
+                </div>
+                <div class="product_item_catal">
+                    <div class="product_item_image">
+                        <div class="product_item_hot">hot</div>
+                        <img src="product4.png" tppabs="http://develov2.beget.tech/img/product4.png" alt="image">
+                    </div>
+                    <div class="product_item_content">
+                        <div class="product_item_title">
+                            Универсальное зарядное устройство Greenworks G24C
+                        </div>
+                        <div class="product_item_row">
+                            <div class="product_item_row_item">
+                                <div class="nalich1">
+                                    <span><img src="nasklade.png" tppabs="http://develov2.beget.tech/img/nasklade.png" alt="icon"></span>
+                                    <span>На складе</span>
+                                </div>
+                            </div>
+                            <div class="product_item_row_item">
+                                Код 3022055
+                            </div>
+                        </div>
+                        <div class="product_item_row">
+                            <div class="product_item_row_item">
+                                <img src="stars.png" tppabs="http://develov2.beget.tech/img/stars.png" alt="image">
+                            </div>
+                            <div class="product_item_row_item">
+                                <span><img src="otz.png" tppabs="http://develov2.beget.tech/img/otz.png" alt="image"></span>
+                                <span>45974 отзывов</span>
+                            </div>
+                        </div>
+                        <div class="product_item_price1">
+                            999 ₴
+                        </div>
+                        <div class="product_item_btns">
+                            <div class="product_item_buy">
+                                <a href="#">
+                                    <span>Купить</span>
+                                    <span><img src="cart_white.png" tppabs="http://develov2.beget.tech/img/cart_white.png" alt="icon"></span>
+                                </a>
+                            </div>
+                            <div class="product_item_wish">
+                                <a href="#">
+                                    <img src="wh1.png" tppabs="http://develov2.beget.tech/img/wh1.png" alt="icon">
+                                </a>
+                            </div>
+                            <div class="product_item_comp">
+                                <a href="#">
+                                    <img src="comp1.png" tppabs="http://develov2.beget.tech/img/comp1.png" alt="icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="product_item_desc_catal">
+                            <div class="content">
+                                <p><strong>Текст с фильтра</strong></p>
+                                <ul>
+                                    <li>Текст с фильтра</li>
+                                    <li>Емкость бака - 7,5 л</li>
+                                    <li>Производительность - до 2,2 л/мин</li>
+                                    <li>Удлинитель - 72 см</li>
+                                    <li>Работа от аккумулятора 24 В</li>
+                                    <li>Максимальное давление: 8.5 бар</li>
+                                    <li>Уровень шума: <78 дБ</li>
+                                    <li>Размеры (Д×Ш×В): 280×200×600 мм</li>
+                                    <li>Вес: 2.9 кг</li>
+                                    <li>Гарантия - 3 года</li>
+                                </ul>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="product_item_wr_catal">
+                <div class="product_item_catal">
+                    <div class="product_item_image">
+                        <div class="product_item_hot">hot</div>
+                        <img src="product3.png" tppabs="http://develov2.beget.tech/img/product3.png" alt="image">
+                    </div>
+                    <div class="product_item_content">
+                        <div class="product_item_title">
+                            Газонокосилка электрическая Greenworks GLM1241
+                        </div>
+                        <div class="product_item_row">
+                            <div class="product_item_row_item">
+                                <div class="nalich1">
+                                    <span><img src="podzakaz.png" tppabs="http://develov2.beget.tech/img/podzakaz.png" alt="icon"></span>
+                                    <span>Под заказ</span>
+                                </div>
+                            </div>
+                            <div class="product_item_row_item">
+                                Код 3022055
+                            </div>
+                        </div>
+                        <div class="product_item_row">
+                            <div class="product_item_row_item">
+                                <img src="stars.png" tppabs="http://develov2.beget.tech/img/stars.png" alt="image">
+                            </div>
+                            <div class="product_item_row_item">
+                                <span><img src="otz.png" tppabs="http://develov2.beget.tech/img/otz.png" alt="image"></span>
+                                <span>0 отзывов</span>
+                            </div>
+                        </div>
+                        <div class="product_item_price1">
+                            8 999 ₴
+                        </div>
+                        <div class="product_item_btns">
+                            <div class="product_item_buy_gray">
+                                <a href="#">
+                                    <span>Купить</span>
+                                    <span ><img src="cart_white.png" tppabs="http://develov2.beget.tech/img/cart_white.png" alt="icon"></span>
+                                </a>
+                            </div>
+                            <div class="product_item_wish">
+                                <a href="#">
+                                    <img src="wh1.png" tppabs="http://develov2.beget.tech/img/wh1.png" alt="icon">
+                                </a>
+                            </div>
+                            <div class="product_item_comp">
+                                <a href="#">
+                                    <img src="comp1.png" tppabs="http://develov2.beget.tech/img/comp1.png" alt="icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="product_item_desc_catal">
+                            <div class="content">
+                                <p><strong>Текст с фильтра</strong></p>
+                                <ul>
+                                    <li>Текст с фильтра</li>
+                                    <li>Емкость бака - 7,5 л</li>
+                                    <li>Производительность - до 2,2 л/мин</li>
+                                    <li>Удлинитель - 72 см</li>
+                                    <li>Работа от аккумулятора 24 В</li>
+                                    <li>Максимальное давление: 8.5 бар</li>
+                                    <li>Уровень шума: <78 дБ</li>
+                                    <li>Размеры (Д×Ш×В): 280×200×600 мм</li>
+                                    <li>Вес: 2.9 кг</li>
+                                    <li>Гарантия - 3 года</li>
+                                </ul>
+                            </div>
+                        </div>
+                </div>
+                <div class="product_item_catal">
+                    <div class="product_item_image">
+                        <div class="product_item_hot">hot</div>
+                        <img src="product2.png" tppabs="http://develov2.beget.tech/img/product2.png" alt="image">
+                    </div>
+                    <div class="product_item_content">
+                        <div class="product_item_title">
+                            Опрыскиватель садовый аккумуляторный Greenworks GSP1250
+                        </div>
+                        <div class="product_item_row">
+                            <div class="product_item_row_item">
+                                <div class="nalich1">
+                                    <span><img src="nasklade.png" tppabs="http://develov2.beget.tech/img/nasklade.png" alt="icon"></span>
+                                    <span>На складе</span>
+                                </div>
+                            </div>
+                            <div class="product_item_row_item">
+                                Код 15
+                            </div>
+                        </div>
+                        <div class="product_item_row">
+                            <div class="product_item_row_item">
+                                <img src="stars.png" tppabs="http://develov2.beget.tech/img/stars.png" alt="image">
+                            </div>
+                            <div class="product_item_row_item">
+                                <span><img src="otz.png" tppabs="http://develov2.beget.tech/img/otz.png" alt="image"></span>
+                                <span>54 отзывов</span>
+                            </div>
+                        </div>
+                        <div class="product_item_price2">
+                            <div class="product_item_price2_row">
+                                <span><del>647</del></span>
+                                <span>Ваша скидка - 647 грн</span>
+                            </div>
+                            <div class="product_item_price2_val">3 671 ₴</div>
+                        </div>
+                        <div class="product_item_btns">
+                            <div class="product_item_buy">
+                                <a href="#">
+                                    <span>Купить</span>
+                                    <span><img src="cart_white.png" tppabs="http://develov2.beget.tech/img/cart_white.png" alt="icon"></span>
+                                </a>
+                            </div>
+                            <div class="product_item_wish">
+                                <a href="#">
+                                    <img src="wh1.png" tppabs="http://develov2.beget.tech/img/wh1.png" alt="icon">
+                                </a>
+                            </div>
+                            <div class="product_item_comp">
+                                <a href="#">
+                                    <img src="comp1.png" tppabs="http://develov2.beget.tech/img/comp1.png" alt="icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="product_item_desc_catal">
+                            <div class="content">
+                                <p><strong>Текст с фильтра</strong></p>
+                                <ul>
+                                    <li>Текст с фильтра</li>
+                                    <li>Емкость бака - 7,5 л</li>
+                                    <li>Производительность - до 2,2 л/мин</li>
+                                    <li>Удлинитель - 72 см</li>
+                                    <li>Работа от аккумулятора 24 В</li>
+                                    <li>Максимальное давление: 8.5 бар</li>
+                                    <li>Уровень шума: <78 дБ</li>
+                                    <li>Размеры (Д×Ш×В): 280×200×600 мм</li>
+                                    <li>Вес: 2.9 кг</li>
+                                    <li>Гарантия - 3 года</li>
+                                </ul>
+                            </div>
+                        </div>
+                </div>
+                <div class="product_item_catal">
+                    <div class="product_item_image">
+                        <div class="product_item_hot">hot</div>
+                        <img src="product4.png" tppabs="http://develov2.beget.tech/img/product4.png" alt="image">
+                    </div>
+                    <div class="product_item_content">
+                        <div class="product_item_title">
+                            Универсальное зарядное устройство Greenworks G24C
+                        </div>
+                        <div class="product_item_row">
+                            <div class="product_item_row_item">
+                                <div class="nalich1">
+                                    <span><img src="nasklade.png" tppabs="http://develov2.beget.tech/img/nasklade.png" alt="icon"></span>
+                                    <span>На складе</span>
+                                </div>
+                            </div>
+                            <div class="product_item_row_item">
+                                Код 3022055
+                            </div>
+                        </div>
+                        <div class="product_item_row">
+                            <div class="product_item_row_item">
+                                <img src="stars.png" tppabs="http://develov2.beget.tech/img/stars.png" alt="image">
+                            </div>
+                            <div class="product_item_row_item">
+                                <span><img src="otz.png" tppabs="http://develov2.beget.tech/img/otz.png" alt="image"></span>
+                                <span>45974 отзывов</span>
+                            </div>
+                        </div>
+                        <div class="product_item_price1">
+                            999 ₴
+                        </div>
+                        <div class="product_item_btns">
+                            <div class="product_item_buy">
+                                <a href="#">
+                                    <span>Купить</span>
+                                    <span><img src="cart_white.png" tppabs="http://develov2.beget.tech/img/cart_white.png" alt="icon"></span>
+                                </a>
+                            </div>
+                            <div class="product_item_wish">
+                                <a href="#">
+                                    <img src="wh1.png" tppabs="http://develov2.beget.tech/img/wh1.png" alt="icon">
+                                </a>
+                            </div>
+                            <div class="product_item_comp">
+                                <a href="#">
+                                    <img src="comp1.png" tppabs="http://develov2.beget.tech/img/comp1.png" alt="icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="product_item_desc_catal">
+                            <div class="content">
+                                <p><strong>Текст с фильтра</strong></p>
+                                <ul>
+                                    <li>Текст с фильтра</li>
+                                    <li>Емкость бака - 7,5 л</li>
+                                    <li>Производительность - до 2,2 л/мин</li>
+                                    <li>Удлинитель - 72 см</li>
+                                    <li>Работа от аккумулятора 24 В</li>
+                                    <li>Максимальное давление: 8.5 бар</li>
+                                    <li>Уровень шума: 78 дБ</li>
+                                    <li>Размеры (Д×Ш×В): 280×200×600 мм</li>
+                                    <li>Вес: 2.9 кг</li>
+                                    <li>Гарантия - 3 года</li>
+                                </ul>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class = "more_tov"><span>&#10227;</span> Показать больше товаров</div>
+        </div>
+    </div>
+    <div class = "bottom_page">
+                <div class = "page_bef">
+                    &#10096; Предыдущая страница
+                </div>
+                <div class = "page_num">
+                    <a href="#"> 1 </a>
+                    <a href="#"> 2 </a>
+                    <a href="#"> 3 </a>
+                    <a href="#"><b> 4 </b></a>
+                    <a href="#"> 5 </a>
+                    <a href="#"> ... </a>
+                    <a href="#"> 20 </a>
+                </div>
+                <div class = "page_next">
+                     Следующая страница &#10097;
+                </div>
+    </div>
+        <div class="s6">
+            <div class="wrapper">
+                <div class="s6_items">
+                    <div class="s6_item">
+                        <div class="s6_item_img">
+                            <img src="s5_1.png" tppabs="http://develov2.beget.tech/img/s5_1.png" alt="image">
+                        </div>
+                        <div class="s6_item_content">
+                            <div class="s6_item_title">Садовая техника</div>
+                            <div class="s6_item_btn">
+                                <a href="#">В раздел</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="s6_item">
+                        <div class="s6_item_img">
+                            <img src="s5_2.png" tppabs="http://develov2.beget.tech/img/s5_2.png" alt="image">
+                        </div>
+                        <div class="s6_item_content">
+                            <div class="s6_item_title">Капельный полив и аксессуары </div>
+                            <div class="s6_item_btn">
+                                <a href="#">В раздел</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="s6_item">
+                        <div class="s6_item_img">
+                            <img src="s5_3.png" tppabs="http://develov2.beget.tech/img/s5_3.png" alt="image">
+                        </div>
+                        <div class="s6_item_content">
+                            <div class="s6_item_title">Насосное оборудование </div>
+                            <div class="s6_item_btn">
+                                <a href="#">В раздел</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="s6_item">
+                        <div class="s6_item_img">
+                            <img src="s5_4.png" tppabs="http://develov2.beget.tech/img/s5_4.png" alt="image">
+                        </div>
+                        <div class="s6_item_content">
+                            <div class="s6_item_title">Системы автоматического полива </div>
+                            <div class="s6_item_btn">
+                                <a href="#">В раздел</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="s6_item">
+                        <div class="s6_item_img">
+                            <img src="s5_5.png" tppabs="http://develov2.beget.tech/img/s5_5.png" alt="image">
+                        </div>
+                        <div class="s6_item_content">
+                            <div class="s6_item_title">Полиэтиленовые трубы и фитинги  </div>
+                            <div class="s6_item_btn">
+                                <a href="#">В раздел</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class = "s5">
+            <div class = "s5_title_1"> газоноколиски ручные</div>
+            <div class = "s5_title_2"><span> газонокосилки маленькие</span></div>
+        </div>
+        <div class="s7">
+            <div class="wrapper">
+                <div class="content">
+                    <h2>Автоматический полив газонов: оборудование для автополива в Киеве</h2>
+                    <p>Ручной полив растений на участке – это трата времени и усилий. Достаточно грамотно организовать автополив и газон будет зеленым, цветы – яркими, а огород отблагодарит щедрым урожаем. Такие системы не требуют вмешательства человека, они работают в автоматическом режиме.</p>
+                    <h4>Плюсы</h4>
+                    <ol>
+                        <li>Орошение происходит систематически, вода подается равномерно. Это защищает растения от высыхания.</li>
+                        <li>Можно установить капельный полив газона или огорода на даче. Вам не придется регулярно носить ведра, чтобы полить грядки.</li>
+                        <li>Ороситель для полива можно запрограммировать. Он будет поливать участок з заданной периодичностью, не требуя участия человека.</li>
+                        <li>Такие системы экономят воду. Вам не придется переплачивать за этот ресурс.</li>
+                        <li>Демонтировать оборудование для полива осенью не требуется. Такие системы неприхотливы, устойчивы к морозам.</li>
+                    </ol>
+                    <h4>Необходимое оборудование для полива</h4>
+                    <p>Чтобы реализовать систему автоматического полива, необходимо создать схему орошения. В ней учитывают расположение грядок, клумб, растений, периодичность полива.</p>
+                    <p>Для монтажа потребуется оборудование для полива:</p>
+                    <ul>
+                        <li>дождеватели;</li>
+                        <li>фильтрационные системы;</li>
+                        <li>трубы, фурнитура, фитинги;</li>
+                        <li>поливочные форсунки, веерные оросители;</li>
+                        <li>шланг, насосы;</li>
+                        <li>контроллеры, таймеры, датчики.</li>
+                    </ul>
+                    <p>Оборудование для системы полива газона, огорода или приусадебного участка есть в каталоге нашего магазина. У нас можно заказать оборудование для полива и орошения проверенных производителей.</p>
+                    <p>Программируется система на контроллере. Основные функции такой техники:</p>
+                    <ul>
+                        <li>определение последовательности работы и очередности линий;</li>
+                        <li>учет сезонных изменений;</li>
+                        <li>определение времени орошения и дней недели;</li>
+                        <li>автоматическое отключение при осадках, порывистом ветре;</li>
+                        <li>возобновление работы после внепланового отключения электричества – для этого предусмотрено питание от отдельной батареи.</li>
+                    </ul>
+                    <p>Садоводу достаточно указать, сколько должно длиться орошение, когда его начать и по каким дням недели проводить. Правильно выполненный монтаж и грамотное программирование – залог корректной работы системы. Она самостоятельно обеспечит ваш сад, огород, клумбу или участок необходимой влагой в течение всего дачного сезона.</p>
+                    <h2>5 причин купить оборудование для полива у нас</h2>
+                    <ol>
+                        <li>Мы проверяем оборудование для полива, прежде чем внесем их в каталог. Гарантируем эффективность устройств.</li>
+                        <li>У нас низкие цены, есть скидки для оптовых покупателей.</li>
+                        <li>Наша компания – это часть заводов, которые выпускают оборудование для полива газона, огорода, сада и других участков. У нас налажены прямые поставки от производителей.</li>
+                        <li>Постоянно расширяем ассортимент оборудования для автоматического полива в Украине и комплектующих, поэтому у нас можно заказать товары для орошения, автоматического или ручного полива, приспособления, насосы Pedrollo необходимые для ухода за участком.</li>
+                        <li>Выполняем доставку товаров «Новой Почтой». Купить автоматический полив в Киеве и оплатить покупку можно наличными, на карту, наложенным платежом, по безналичному расчету.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="wrapper">
+                <div class="footer_content">
+                    <div class="footer_row1">
+                        <div class="footer_row1_item">
+                            <div class="footer_row1_item_title">
+                                Компания
+                            </div>
+                            <div class="footer_row1_item_menu">
+                                <ul>
+                                    <li>
+                                        <a href="#">О нас</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Контакты</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Блог</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Договор оферты</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="footer_row1_item">
+                            <div class="footer_row1_item_title">
+                                Каталог товаров
+                            </div>
+                            <div class="footer_row1_item_menu">
+                                <ul>
+                                    <li>
+                                        <a href="#">Системы автоматического полива</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Полиэтиленовые трубы и фитинги</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Капельный полив и аксессуары</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Насосное оборудование</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Садовая техника</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="footer_row1_item">
+                            <div class="footer_row1_item_title">
+                                Клиентам
+                            </div>
+                            <div class="footer_row1_item_menu">
+                                <ul>
+                                    <li>
+                                        <a href="#">Бренды</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Доставка</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Оплата</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Оптовикам</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="footer_row1_item">
+                            <div class="footer_row1_item_title">
+                                Консультация и заказ
+                            </div>
+                            <div class="f_phone">
+                                <a href="tel:+380965941814">+38 (096) 594 18 14</a>
+                            </div>
+                            <p>График работы: Пн-Вс 10:00-20:00</p>
+                            <p><a href="mailto:info@ukrpoliv.com">info@ukrpoliv.com</a></p>
+                            <p>Киев, Григоренка 20</p>
+                            <div class="social">
+                                <div class="social_title">Мы в соцсетях</div>
+                                <div class="social_items">
+                                    <a href="#" target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg>
+                                    </a>
+                                    <a href="#" target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer_row2">
+                        <div class="f_copy">
+                             © 2022 - 2024 Интернет-магазин UKRPOLIV.  Все права защищены. 
+                        </div>
+                        <div class="f_logo">
+                            <a href="index.htm" tppabs="http://develov2.beget.tech/">
+                                <img src="logo_f.png" tppabs="http://develov2.beget.tech/img/logo_f.png" alt="logo">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    <script src="jquery-3.1.1.min.js" tppabs="http://develov2.beget.tech/js/jquery-3.1.1.min.js"></script>  
+    <script src="slick.min.js" tppabs="http://develov2.beget.tech/slick/slick.min.js"></script>  
+    <script src="js.js" tppabs="http://develov2.beget.tech/js/js.js"></script>
+    </body>
+    </html>
+    
