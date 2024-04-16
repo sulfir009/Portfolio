@@ -1,0 +1,50 @@
+function send_to_bitrix24($record, $handler) {
+    // Получаем данные из записи формы
+    $form_data = [];
+    $raw_fields = $record->get('fields');
+    foreach ($raw_fields as $id => $field) {
+        // Используем название поля в качестве ключа, преобразованного к верхнему регистру, если это необходимо
+        $field_id = strtoupper($field['id']);
+        $form_data[$field_id] = $field['value'];
+    }
+
+    // Составляем данные для Bitrix24
+    // Подготовка данных для Bitrix24
+$lead_data = [
+    'fields' => [
+        'TITLE' => $form_data['NAME'] ?? 'Неизвестно', // Имя клиента становится заголовком лида
+        'PHONE' => [
+            [
+                'VALUE' => $form_data['PHONE'] ?? '',
+                'VALUE_TYPE' => 'WORK'
+            ]
+        ],
+        'UF_CRM_1664370842' => '1754',
+		'COMMENTS' => "Страница: 'Безкоштовний IT FEST для школярів та їх батьків', Залишити заявку |",
+		'SOURCE_ID' => "Заявка з сайту",
+    ],
+    'params' => ['REGISTER_SONET_EVENT' => 'Y'],
+];
+
+
+    // URL вебхука Bitrix24
+    $webhook_url = 'https://levelup.bitrix24.eu/rest/200/5lz8h2g5q2h9zbik/crm.lead.add.json';
+
+    // Отправляем данные на вебхук
+    $response = wp_remote_post($webhook_url, [
+        'body' => json_encode($lead_data),
+        'headers' => ['Content-Type' => 'application/json'],
+        'method' => 'POST',
+        'data_format' => 'body',
+    ]);
+
+    // Проверяем ответ
+    if (is_wp_error($response)) {
+        error_log('Ошибка при отправке данных в Bitrix24: ' . $response->get_error_message());
+    } else {
+        error_log('Данные успешно отправлены в Bitrix24: ' . wp_remote_retrieve_body($response));
+    }
+}
+
+add_action('elementor_pro/forms/new_record', 'send_to_bitrix24', 10, 2);
+

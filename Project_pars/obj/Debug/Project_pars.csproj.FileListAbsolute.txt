@@ -1,0 +1,169 @@
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\obj\Debug\Project_pars.csproj.AssemblyReference.cache
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\obj\Debug\Project_pars.csproj.SuggestedBindingRedirects.cache
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\obj\Debug\MainWindow.baml
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\obj\Debug\MainWindow.g.cs
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\obj\Debug\App.g.cs
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\obj\Debug\Project_pars_MarkupCompile.cache
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\obj\Debug\Project_pars.g.resources
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\obj\Debug\Project_pars.Properties.Resources.resources
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\obj\Debug\Project_pars.csproj.GenerateResource.cache
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\obj\Debug\Project_pars.csproj.CoreCompileInputs.cache
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\bin\Debug\Project_pars.exe.config
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\bin\Debug\Project_pars.exe
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\bin\Debug\Project_pars.pdb
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\obj\Debug\Project_pars.exe
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\obj\Debug\Project_pars.pdb
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\obj\Debug\Project_pars.csproj.CopyComplete
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\obj\Debug\Project_pars_Content.g.cs
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\bin\Debug\AdvancedStringBuilder.dll
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\bin\Debug\JavaScriptEngineSwitcher.ChakraCore.dll
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\bin\Debug\JavaScriptEngineSwitcher.Core.dll
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\bin\Debug\System.Buffers.dll
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\bin\Debug\AdvancedStringBuilder.xml
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\bin\Debug\JavaScriptEngineSwitcher.ChakraCore.xml
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\bin\Debug\JavaScriptEngineSwitcher.Core.xml
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\bin\Debug\ru-RU\JavaScriptEngineSwitcher.ChakraCore.resources.dll
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\bin\Debug\ru-RU\JavaScriptEngineSwitcher.Core.resources.dll
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\bin\Debug\ClearScript.Core.dll
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\bin\Debug\ClearScript.V8.dll
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\bin\Debug\ClearScript.V8.ICUData.dll
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\bin\Debug\ClearScript.Core.xml
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\bin\Debug\ClearScript.V8.xml
+C:\Users\Asus\OneDrive\Рабочий стол\Project_pars\bin\Debug\ClearScript.V8.ICUData.xml
+C:\Project_pars\bin\Debug\Project_pars.exe.config
+C:\Project_pars\bin\Debug\Project_pars.exe
+C:\Project_pars\bin\Debug\Project_pars.pdb
+C:\Project_pars\bin\Debug\AdvancedStringBuilder.dll
+C:\Project_pars\bin\Debug\ClearScript.Core.dll
+C:\Project_pars\bin\Debug\ClearScript.V8.dll
+C:\Project_pars\bin\Debug\ClearScript.V8.ICUData.dll
+C:\Project_pars\bin\Debug\JavaScriptEngineSwitcher.ChakraCore.dll
+C:\Project_pars\bin\Debug\JavaScriptEngineSwitcher.Core.dll
+C:\Project_pars\bin\Debug\Newtonsoft.Json.dll
+C:\Project_pars\bin\Debug\System.Buffers.dll
+C:\Project_pars\bin\Debug\AdvancedStringBuilder.xml
+C:\Project_pars\bin\Debug\ClearScript.Core.xml
+C:\Project_pars\bin\Debug\ClearScript.V8.xml
+C:\Project_pars\bin\Debug\ClearScript.V8.ICUData.xml
+C:\Project_pars\bin\Debug\JavaScriptEngineSwitcher.ChakraCore.xml
+C:\Project_pars\bin\Debug\JavaScriptEngineSwitcher.Core.xml
+C:\Project_pars\bin\Debug\Newtonsoft.Json.xml
+C:\Project_pars\bin\Debug\ru-RU\JavaScriptEngineSwitcher.ChakraCore.resources.dll
+C:\Project_pars\bin\Debug\ru-RU\JavaScriptEngineSwitcher.Core.resources.dll
+C:\Project_pars\obj\Debug\Project_pars.csproj.AssemblyReference.cache
+C:\Project_pars\obj\Debug\Project_pars.csproj.SuggestedBindingRedirects.cache
+C:\Project_pars\obj\Debug\MainWindow.baml
+C:\Project_pars\obj\Debug\MainWindow.g.cs
+C:\Project_pars\obj\Debug\App.g.cs
+C:\Project_pars\obj\Debug\Project_pars_Content.g.cs
+C:\Project_pars\obj\Debug\Project_pars_MarkupCompile.cache
+C:\Project_pars\obj\Debug\Project_pars.g.resources
+C:\Project_pars\obj\Debug\Project_pars.Properties.Resources.resources
+C:\Project_pars\obj\Debug\Project_pars.csproj.GenerateResource.cache
+C:\Project_pars\obj\Debug\Project_pars.csproj.CoreCompileInputs.cache
+C:\Project_pars\obj\Debug\Project_pars.csproj.CopyComplete
+C:\Project_pars\obj\Debug\Project_pars.exe
+C:\Project_pars\obj\Debug\Project_pars.pdb
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\bin\Debug\Project_pars.exe.config
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\bin\Debug\Project_pars.exe
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\bin\Debug\Project_pars.pdb
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\bin\Debug\AdvancedStringBuilder.dll
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\bin\Debug\ClearScript.Core.dll
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\bin\Debug\ClearScript.V8.dll
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\bin\Debug\ClearScript.V8.ICUData.dll
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\bin\Debug\JavaScriptEngineSwitcher.ChakraCore.dll
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\bin\Debug\JavaScriptEngineSwitcher.Core.dll
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\bin\Debug\System.Buffers.dll
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\bin\Debug\AdvancedStringBuilder.xml
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\bin\Debug\ClearScript.Core.xml
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\bin\Debug\ClearScript.V8.xml
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\bin\Debug\ClearScript.V8.ICUData.xml
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\bin\Debug\JavaScriptEngineSwitcher.ChakraCore.xml
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\bin\Debug\JavaScriptEngineSwitcher.Core.xml
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\bin\Debug\ru-RU\JavaScriptEngineSwitcher.ChakraCore.resources.dll
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\bin\Debug\ru-RU\JavaScriptEngineSwitcher.Core.resources.dll
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\obj\Debug\Project_pars.csproj.AssemblyReference.cache
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\obj\Debug\Project_pars.csproj.SuggestedBindingRedirects.cache
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\obj\Debug\MainWindow.baml
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\obj\Debug\MainWindow.g.cs
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\obj\Debug\App.g.cs
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\obj\Debug\Project_pars_Content.g.cs
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\obj\Debug\Project_pars_MarkupCompile.cache
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\obj\Debug\Project_pars.g.resources
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\obj\Debug\Project_pars.Properties.Resources.resources
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\obj\Debug\Project_pars.csproj.GenerateResource.cache
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\obj\Debug\Project_pars.csproj.CoreCompileInputs.cache
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\obj\Debug\Project_pars.csproj.CopyComplete
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\obj\Debug\Project_pars.exe
+C:\Users\Asus\Downloads\Telegram Desktop\Project_pars (2)\Project_pars\obj\Debug\Project_pars.pdb
+C:\Users\Asus\Downloads\Project_pars_result\bin\Debug\Project_pars.exe.config
+C:\Users\Asus\Downloads\Project_pars_result\bin\Debug\Project_pars.exe
+C:\Users\Asus\Downloads\Project_pars_result\bin\Debug\Project_pars.pdb
+C:\Users\Asus\Downloads\Project_pars_result\bin\Debug\AdvancedStringBuilder.dll
+C:\Users\Asus\Downloads\Project_pars_result\bin\Debug\ClearScript.Core.dll
+C:\Users\Asus\Downloads\Project_pars_result\bin\Debug\ClearScript.V8.dll
+C:\Users\Asus\Downloads\Project_pars_result\bin\Debug\ClearScript.V8.ICUData.dll
+C:\Users\Asus\Downloads\Project_pars_result\bin\Debug\JavaScriptEngineSwitcher.ChakraCore.dll
+C:\Users\Asus\Downloads\Project_pars_result\bin\Debug\JavaScriptEngineSwitcher.Core.dll
+C:\Users\Asus\Downloads\Project_pars_result\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Asus\Downloads\Project_pars_result\bin\Debug\System.Buffers.dll
+C:\Users\Asus\Downloads\Project_pars_result\bin\Debug\AdvancedStringBuilder.xml
+C:\Users\Asus\Downloads\Project_pars_result\bin\Debug\ClearScript.Core.xml
+C:\Users\Asus\Downloads\Project_pars_result\bin\Debug\ClearScript.V8.xml
+C:\Users\Asus\Downloads\Project_pars_result\bin\Debug\ClearScript.V8.ICUData.xml
+C:\Users\Asus\Downloads\Project_pars_result\bin\Debug\JavaScriptEngineSwitcher.ChakraCore.xml
+C:\Users\Asus\Downloads\Project_pars_result\bin\Debug\JavaScriptEngineSwitcher.Core.xml
+C:\Users\Asus\Downloads\Project_pars_result\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Asus\Downloads\Project_pars_result\bin\Debug\ru-RU\JavaScriptEngineSwitcher.ChakraCore.resources.dll
+C:\Users\Asus\Downloads\Project_pars_result\bin\Debug\ru-RU\JavaScriptEngineSwitcher.Core.resources.dll
+C:\Users\Asus\Downloads\Project_pars_result\obj\Debug\Project_pars.csproj.AssemblyReference.cache
+C:\Users\Asus\Downloads\Project_pars_result\obj\Debug\Project_pars.csproj.SuggestedBindingRedirects.cache
+C:\Users\Asus\Downloads\Project_pars_result\obj\Debug\MainWindow.baml
+C:\Users\Asus\Downloads\Project_pars_result\obj\Debug\MainWindow.g.cs
+C:\Users\Asus\Downloads\Project_pars_result\obj\Debug\App.g.cs
+C:\Users\Asus\Downloads\Project_pars_result\obj\Debug\Project_pars_Content.g.cs
+C:\Users\Asus\Downloads\Project_pars_result\obj\Debug\Project_pars_MarkupCompile.cache
+C:\Users\Asus\Downloads\Project_pars_result\obj\Debug\Project_pars.g.resources
+C:\Users\Asus\Downloads\Project_pars_result\obj\Debug\Project_pars.Properties.Resources.resources
+C:\Users\Asus\Downloads\Project_pars_result\obj\Debug\Project_pars.csproj.GenerateResource.cache
+C:\Users\Asus\Downloads\Project_pars_result\obj\Debug\Project_pars.csproj.CoreCompileInputs.cache
+C:\Users\Asus\Downloads\Project_pars_result\obj\Debug\Project_pars.csproj.CopyComplete
+C:\Users\Asus\Downloads\Project_pars_result\obj\Debug\Project_pars.exe
+C:\Users\Asus\Downloads\Project_pars_result\obj\Debug\Project_pars.pdb
+C:\Users\ProstoBog\source\repos\Project_pars\bin\Debug\Project_pars.exe.config
+C:\Users\ProstoBog\source\repos\Project_pars\bin\Debug\Project_pars.exe
+C:\Users\ProstoBog\source\repos\Project_pars\bin\Debug\Project_pars.pdb
+C:\Users\ProstoBog\source\repos\Project_pars\bin\Debug\AdvancedStringBuilder.dll
+C:\Users\ProstoBog\source\repos\Project_pars\bin\Debug\ClearScript.Core.dll
+C:\Users\ProstoBog\source\repos\Project_pars\bin\Debug\ClearScript.V8.dll
+C:\Users\ProstoBog\source\repos\Project_pars\bin\Debug\ClearScript.V8.ICUData.dll
+C:\Users\ProstoBog\source\repos\Project_pars\bin\Debug\JavaScriptEngineSwitcher.ChakraCore.dll
+C:\Users\ProstoBog\source\repos\Project_pars\bin\Debug\JavaScriptEngineSwitcher.Core.dll
+C:\Users\ProstoBog\source\repos\Project_pars\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ProstoBog\source\repos\Project_pars\bin\Debug\System.Buffers.dll
+C:\Users\ProstoBog\source\repos\Project_pars\bin\Debug\AdvancedStringBuilder.xml
+C:\Users\ProstoBog\source\repos\Project_pars\bin\Debug\ClearScript.Core.xml
+C:\Users\ProstoBog\source\repos\Project_pars\bin\Debug\ClearScript.V8.xml
+C:\Users\ProstoBog\source\repos\Project_pars\bin\Debug\ClearScript.V8.ICUData.xml
+C:\Users\ProstoBog\source\repos\Project_pars\bin\Debug\JavaScriptEngineSwitcher.ChakraCore.xml
+C:\Users\ProstoBog\source\repos\Project_pars\bin\Debug\JavaScriptEngineSwitcher.Core.xml
+C:\Users\ProstoBog\source\repos\Project_pars\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ProstoBog\source\repos\Project_pars\bin\Debug\ru-RU\JavaScriptEngineSwitcher.ChakraCore.resources.dll
+C:\Users\ProstoBog\source\repos\Project_pars\bin\Debug\ru-RU\JavaScriptEngineSwitcher.Core.resources.dll
+C:\Users\ProstoBog\source\repos\Project_pars\obj\Debug\Project_pars.csproj.AssemblyReference.cache
+C:\Users\ProstoBog\source\repos\Project_pars\obj\Debug\MainWindow.baml
+C:\Users\ProstoBog\source\repos\Project_pars\obj\Debug\MainWindow.g.cs
+C:\Users\ProstoBog\source\repos\Project_pars\obj\Debug\App.g.cs
+C:\Users\ProstoBog\source\repos\Project_pars\obj\Debug\Project_pars_Content.g.cs
+C:\Users\ProstoBog\source\repos\Project_pars\obj\Debug\Project_pars_MarkupCompile.cache
+C:\Users\ProstoBog\source\repos\Project_pars\obj\Debug\Project_pars.g.resources
+C:\Users\ProstoBog\source\repos\Project_pars\obj\Debug\Project_pars.Properties.Resources.resources
+C:\Users\ProstoBog\source\repos\Project_pars\obj\Debug\Project_pars.csproj.GenerateResource.cache
+C:\Users\ProstoBog\source\repos\Project_pars\obj\Debug\Project_pars.csproj.CoreCompileInputs.cache
+C:\Users\ProstoBog\source\repos\Project_pars\obj\Debug\Project_.4EC734AC.Up2Date
+C:\Users\ProstoBog\source\repos\Project_pars\obj\Debug\Project_pars.exe
+C:\Users\ProstoBog\source\repos\Project_pars\obj\Debug\Project_pars.pdb
