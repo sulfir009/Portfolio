@@ -1,3 +1,22 @@
+<?php
+
+function normalize_phone_number($phone) {
+    // Удалить все кроме цифр
+    $digits = preg_replace('/\D/', '', $phone);
+
+    // Проверить, начинается ли номер с '380'
+    if (substr($digits, 0, 3) === '380' && strlen($digits) === 12) {
+        return '+' . $digits; // Корректный номер
+    } elseif (substr($digits, 0, 2) === '80' && strlen($digits) === 11) {
+        return '+3' . $digits; // Дополнить номер
+    } elseif (substr($digits, 0, 1) === '0' && strlen($digits) === 10) {
+        return '+38' . $digits; // Дополнить номер
+    }
+
+    // Возвращать оригинальный номер, если он не соответствует ожидаемым форматам
+    return $phone;
+}
+
 function send_to_bitrix24($record, $handler) {
     // Получаем данные из записи формы
     $form_data = [];
@@ -10,25 +29,32 @@ function send_to_bitrix24($record, $handler) {
 
     // Составляем данные для Bitrix24
     // Подготовка данных для Bitrix24
-$lead_data = [
-    'fields' => [
-        'TITLE' => $form_data['NAME'] ?? 'Неизвестно', // Имя клиента становится заголовком лида
-        'PHONE' => [
-            [
-                'VALUE' => $form_data['PHONE'] ?? '',
-                'VALUE_TYPE' => 'WORK'
-            ]
+    $normalized_phone = normalize_phone_number($form_data['PHONE'] ?? '');
+    $lead_data = [
+        'fields' => [
+            'TITLE' => $form_data['name'] ?? 'Неизвестно',
+            'PHONE' => [
+                [
+                    'VALUE' => $form_data['message'] ?? '',
+                    'VALUE_TYPE' => 'WORK'
+                ]
+            ],
+            'EMAIL' => [
+                [
+                    'VALUE' => $form_data['email'] ?? '',
+                    'VALUE_TYPE' => 'WORK'
+                ]
+            ],
+            'CITY' => $form_data['field_dee641f'] ?? '',
+            'COMMENTS' => "Заявка з сайту livrichy.in", // Можете изменить этот текст
+            'SOURCE_ID' => "Заявка з сайту" // Можете изменить этот текст
         ],
-        'UF_CRM_1664370842' => '1754',
-		'COMMENTS' => "Страница: 'Безкоштовний IT FEST для школярів та їх батьків', Залишити заявку |",
-		'SOURCE_ID' => "Заявка з сайту",
-    ],
-    'params' => ['REGISTER_SONET_EVENT' => 'Y'],
-];
+        'params' => ['REGISTER_SONET_EVENT' => 'Y']
+    ];
 
 
     // URL вебхука Bitrix24
-    $webhook_url = 'https://levelup.bitrix24.eu/rest/200/5lz8h2g5q2h9zbik/crm.lead.add.json';
+    $webhook_url = 'https://crm.livrichy.com/rest/606/0xfrbltb933m2dvl/crm.lead.add';
 
     // Отправляем данные на вебхук
     $response = wp_remote_post($webhook_url, [
@@ -47,4 +73,3 @@ $lead_data = [
 }
 
 add_action('elementor_pro/forms/new_record', 'send_to_bitrix24', 10, 2);
-

@@ -1,0 +1,567 @@
+
+function custom_apply_filters($query) {
+    if (!is_admin() && $query->is_main_query() && is_shop()) {
+        $meta_query = $query->get('meta_query') ?: [];
+        $tax_query = $query->get('tax_query') ?: [];
+
+        // Добавляем условия фильтрации...
+        // По названию, описанию, цене, SKU, категории, весу и атрибутам, как в предыдущем примере.
+        // Важно добавить условия фильтрации здесь.
+        if (!empty($_GET['product_name'])) {
+                $query->set('s', sanitize_text_field($_GET['product_name']));
+            }
+
+            if (!empty($_GET['product_description'])) {
+                $query->set('post_content', sanitize_text_field($_GET['product_description']));
+            }
+
+            if (!empty($_GET['min_price']) && !empty($_GET['max_price'])) {
+                $meta_query[] = [
+                    'key' => '_price',
+                    'value' => [sanitize_text_field($_GET['min_price']), sanitize_text_field($_GET['max_price'])],
+                    'type' => 'NUMERIC',
+                    'compare' => 'BETWEEN'
+                ];
+            }
+
+            if (!empty($_GET['sku'])) {
+                $meta_query[] = [
+                    'key' => '_sku',
+                    'value' => sanitize_text_field($_GET['sku']),
+                    'compare' => '='
+                ];
+            }
+
+            if (!empty($_GET['category'])) {
+                $tax_query[] = [
+                    'taxonomy' => 'product_cat',
+                    'field' => 'slug',
+                    'terms' => sanitize_text_field($_GET['category']),
+                    'operator' => 'IN'
+                ];
+            }
+
+            if (!empty($_GET['min_weight']) && !empty($_GET['max_weight'])) {
+                $meta_query[] = [
+                    'key' => '_weight',
+                    'value' => [sanitize_text_field($_GET['min_weight']), sanitize_text_field($_GET['max_weight'])],
+                    'type' => 'NUMERIC',
+                    'compare' => 'BETWEEN'
+                ];
+            }
+
+            if (!empty($_GET['attribute']) && !empty($_GET['attribute_value'])) {
+                $taxonomy = 'pa_' . sanitize_text_field($_GET['attribute']);
+                $tax_query[] = [
+                    'taxonomy' => $taxonomy,
+                    'field' => 'name',
+                    'terms' => sanitize_text_field($_GET['attribute_value']),
+                    'operator' => 'IN'
+                ];
+            }
+
+
+        if (!empty($meta_query)) {
+            $query->set('meta_query', $meta_query);
+        }
+
+        if (!empty($tax_query)) {
+            $query->set('tax_query', $tax_query);
+        }
+    }
+}
+add_action('woocommerce_product_query', 'custom_apply_filters');
+
+
+
+function custom_filters_form_shortcode() {
+    ob_start();
+    // Отображение формы
+    $categories = get_terms('product_cat', ['hide_empty' => false]);
+    $attributes = wc_get_attribute_taxonomies();
+
+    echo '<form method="GET">';
+    echo '<input type="text" name="product_name" placeholder="Название товара">';
+    echo '<input type="text" name="product_description" placeholder="Описание товара">';
+    echo '<input type="text" name="min_price" placeholder="Мин. цена">';
+    echo '<input type="text" name="max_price" placeholder="Макс. цена">';
+    echo '<input type="text" name="sku" placeholder="Артикул">';
+    echo '<select name="category"><option value="">Выберите категорию</option>';
+    foreach ($categories as $category) {
+        echo '<option value="' . esc_attr($category->slug) . '">' . esc_html($category->name) . '</option>';
+    }
+    echo '</select>';
+    echo '<input type="text" name="min_weight" placeholder="Мин. вес">';
+    echo '<input type="text" name="max_weight" placeholder="Макс. вес">';
+    echo '<select name="attribute"><option value="">Выберите атрибут</option>';
+    foreach ($attributes as $attribute) {
+        echo '<option value="' . esc_attr($attribute->attribute_name) . '">' . esc_html($attribute->attribute_label) . '</option>';
+    }
+    echo '</select>';
+    echo '<input type="text" name="attribute_value" placeholder="Значение атрибута">';
+    echo '<button type="submit">Фильтровать</button>';
+    echo '</form>';
+
+    return ob_get_clean();
+}
+add_shortcode('custom_filters', 'custom_filters_form_shortcode');
+
+function start_session() {
+    if (!session_id()) {
+        session_start();
+    }
+}
+
+add_action('init', 'start_session', 1);
+
+function set_language() {
+    if (isset($_GET['lang'])) {
+        $_SESSION['lang'] = $_GET['lang'];
+    }
+}
+
+add_action('init', 'set_language');
+
+function filter_products_by_language($query) {
+    if (!is_admin() && $query->is_main_query() && $query->is_post_type_archive('product')) {
+        if (isset($_SESSION['lang']) && $_SESSION['lang'] == 'RU') {
+            $meta_query = array(
+                array(
+                    'key'     => '_sku',
+                    'value'   => '_RU',
+                    'compare' => 'LIKE'
+                )
+            );
+            $query->set('meta_query', $meta_query);
+        } elseif (isset($_SESSION['lang']) && $_SESSION['lang'] == 'UA') {
+            $meta_query = array(
+                array(
+                    'key'     => '_sku',
+                    'value'   => '_UA',
+                    'compare' => 'LIKE'
+                )
+            );
+            $query->set('meta_query', $meta_query);
+        }
+    }
+}
+
+add_action('pre_get_posts', 'filter_products_by_language');
+
+function language_switcher_shortcode() {
+    global $post;
+    $product = wc_get_product($post->ID);
+    $sku = $product ? $product->get_sku() : '';
+    $base_sku = preg_replace('/(_RU|_UA)$/', '', $sku); // Remove any existing language suffix
+
+    $output = '<div class="language-switcher">';
+    $output .= '<a href="?lang=RU&sku=' . $base_sku . '_RU"><img style="width:15%;" src="https://dev-wp-nails.nails.ua/wp-content/uploads/2024/05/rus.png" alt="Русский" /></a>';
+    $output .= '<a href="?lang=UA&sku=' . $base_sku . '_UA"><img style="width: 13%;margin-top: 7px;height: 16px;" src="https://dev-wp-nails.nails.ua/wp-content/uploads/2024/05/ukr.png" alt="Українська" /></a>';
+    $output .= '</div>';
+    return $output;
+}
+add_shortcode('language_switcher', 'language_switcher_shortcode');
+
+function redirect_to_specific_product_version() {
+    if (is_product() && isset($_GET['sku']) && isset($_GET['lang'])) {
+        $sku = sanitize_text_field($_GET['sku']);
+        $lang = sanitize_text_field($_GET['lang']);
+
+        // Find the product by SKU
+        $product_id = wc_get_product_id_by_sku($sku);
+        if ($product_id) {
+            $product_url = get_permalink($product_id);
+            wp_redirect($product_url);
+            exit;
+        }
+    }
+}
+add_action('template_redirect', 'redirect_to_specific_product_version');
+
+
+function enqueue_custom_scripts() {
+    ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Инициализация и обновление кнопок при загрузке страницы
+            initializeCategoryToggle();
+
+            // Проверяем наличие библиотеки для обработки динамически добавленных элементов
+            if (typeof document.arrive === 'function') {
+                document.arrive('.filter__inner-hierarchy-button-open-close', initializeCategoryToggle);
+            }
+        });
+
+        function initializeCategoryToggle() {
+            const toggleButtons = document.querySelectorAll('.filter__inner-hierarchy-button-open-close');
+
+            toggleButtons.forEach(function(button) {
+                const hierarchyId = button.getAttribute('data-hierarchy-id');
+                const subcategories = document.querySelector(`div[data-hierarchy-parent="${hierarchyId}"]`);
+
+                // Устанавливаем начальное состояние подкатегорий как скрытое
+                if (subcategories) {
+                    subcategories.style.display = 'none';
+                    button.textContent = '+';
+                }
+
+                // Удаляем предыдущий обработчик и добавляем новый
+                button.onclick = null; // Очистка предыдущего обработчика
+                button.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    toggleSubcategories(subcategories, button);
+                });
+            });
+        }
+
+        function toggleSubcategories(subcategories, button) {
+            if (subcategories.style.display === 'none' || !subcategories.style.display) {
+                subcategories.style.display = 'block';
+                button.textContent = '-';
+            } else {
+                subcategories.style.display = 'none';
+                button.textContent = '+';
+            }
+        }
+    </script>
+    <?php
+}
+add_action('wp_footer', 'enqueue_custom_scripts');
+
+function translate_category_name($category_name) {
+	$lang = $_COOKIE['lang'] ?? 'RU'; // Default to Russian
+    $translations = [
+        'RU_ Ресницы, Хна' => ['RU' => 'Ресницы, Хна', 'UA' => 'Вії, Хна'],
+        'Аксессуары, пинцеты' => ['RU' => 'Аксессуары, пинцеты', 'UA' => 'Аксесуари, пінцети'],
+        'Ресницы пучковые' => ['RU' => 'Ресницы пучковые', 'UA' => 'Пучкові вії'],
+        'Ресницы накладные' => ['RU' => 'Ресницы накладные', 'UA' => 'Накладні вії'],
+        'Ресницы для наращивания FLASH' => ['RU' => 'Ресницы для наращивания FLASH', 'UA' => 'Вії для нарощування FLASH'],
+        'Ресницы для наращивания ESTHER' => ['RU' => 'Ресницы для наращивания ESTHER', 'UA' => 'Вії для нарощування ESTHER'],
+        'Препараты для ресниц' => ['RU' => 'Препараты для ресниц', 'UA' => 'Препарати для вій'],
+        'Хна для биотату и бровей' => ['RU' => 'Хна для биотату и бровей', 'UA' => 'Хна для біотату та брів'],
+        'Трафареты для тату, биотату' => ['RU' => 'Трафареты для тату, биотату', 'UA' => 'Трафарети для тату, біотату'],
+        'RU_Аксессуары' => ['RU' => 'Аксессуары', 'UA' => 'Аксесуари'],
+        'Аксессуары для маникюра' => ['RU' => 'Аксессуары для маникюра', 'UA' => 'Аксесуари для манікюру'],
+        'Аксессуары для педикюра' => ['RU' => 'Аксессуары для педикюра', 'UA' => 'Аксесуари для педикюру'],
+        'Аксессуары для наращивания' => ['RU' => 'Аксессуары для наращивания', 'UA' => 'Аксесуари для нарощування'],
+        'Формы, типсы, клей' => ['RU' => 'Формы, типсы, клей', 'UA' => 'Форми, тіпси, клей'],
+        'Средства защиты' => ['RU' => 'Средства защиты', 'UA' => 'Засоби захисту'],
+        'RU_Гели, полигели, акрил для наращивания' => ['RU' => 'Гели, полигели, акрил для наращивания', 'UA' => 'Гелі, полігелі, акрил для нарощування'],
+        'UV-гели для наращивания' => ['RU' => 'UV-гели для наращивания', 'UA' => 'UV-гелі для нарощування'],
+        'Полигели Blaze, 30 мл' => ['RU' => 'Полигели Blaze, 30 мл', 'UA' => 'Полігелі Blaze, 30 мл'],
+        'Мономеры акриловые' => ['RU' => 'Мономеры акриловые', 'UA' => 'Мономери акрилові'],
+        'Пудры акриловые' => ['RU' => 'Пудры акриловые', 'UA' => 'Пудри акрилові'],
+        'Пудры цветные' => ['RU' => 'Пудры цветные', 'UA' => 'Пудри кольорові'],
+        '4D гель-пластилин для лепки' => ['RU' => '4D гель-пластилин для лепки', 'UA' => '4D гель-пластилін для ліплення'],
+        'RU_Декор для ногтей' => ['RU' => 'Декор для ногтей', 'UA' => 'Декор для нігтів'],
+        'Стразы для ногтей' => ['RU' => 'Стразы для ногтей', 'UA' => 'Стрази для нігтів'],
+        'Слайдер-дизайны' => ['RU' => 'Слайдер-дизайны', 'UA' => 'Слайдер-дизайни'],
+        'Микс Бриллиант' => ['RU' => 'Микс Бриллиант', 'UA' => 'Мікс Діамант'],
+        'Микс Весна' => ['RU' => 'Микс Весна', 'UA' => 'Мікс Весна'],
+        'Микс' => ['RU' => 'Микс', 'UA' => 'Мікс'],
+        'Микс Осень' => ['RU' => 'Микс Осень', 'UA' => 'Мікс Осінь'],
+        'Микс Рождество' => ['RU' => 'Микс Рождество', 'UA' => 'Мікс Різдво'],
+        'Звездочки (камифубуки)' => ['RU' => 'Звездочки (камифубуки)', 'UA' => 'Зірочки (каміфубукі)'],
+        '3D Ромб (чешуя дракона)' => ['RU' => '3D Ромб (чешуя дракона)', 'UA' => '3D Ромб (луска дракона)'],
+        '3D Треугольники' => ['RU' => '3D Треугольники', 'UA' => '3D Трикутники'],
+        'Сердечки (камифубуки)' => ['RU' => 'Сердечки (камифубуки)', 'UA' => 'Сердечка (каміфубукі)'],
+        'Треугольники (камифубуки)' => ['RU' => 'Треугольники (камифубуки)', 'UA' => 'Трикутники (каміфубукі)'],
+        'Наклейки гибкие линии' => ['RU' => 'Наклейки гибкие линии', 'UA' => 'Наліпки гнучкі лінії'],
+        'Блестки (песок для ногтей)' => ['RU' => 'Блестки (песок для ногтей)', 'UA' => 'Блискітки (пісок для нігтів)'],
+        'Блестки для ногтей' => ['RU' => 'Блестки для ногтей', 'UA' => 'Блискітки для нігтів'],
+        'Меланж (сахарный эффект)' => ['RU' => 'Меланж (сахарный эффект)', 'UA' => 'Меланж (цукровий ефект)'],
+        'Камифубуки (конфетти)' => ['RU' => 'Камифубуки (конфетти)', 'UA' => 'Каміфубукі (конфетті)'],
+        'Другие украшения' => ['RU' => 'Другие украшения', 'UA' => 'Інші прикраси'],
+        'Краски для росписи' => ['RU' => 'Краски для росписи', 'UA' => 'Фарби для розпису'],
+        'Фольга для литья (эффект кракелюра)' => ['RU' => 'Фольга для литья (эффект кракелюра)', 'UA' => 'Фольга для лиття (ефект кракелюра)'],
+		'Аксессуары' => ['RU' => 'Аксессуары', 'UA' => 'Аксесуари'],
+		'RU_Инструменты' => ['RU' => 'Инструменты', 'UA' => 'Інструменти'],
+        'Щипцы-накожницы' => ['RU' => 'Щипцы-накожницы', 'UA' => 'Щипці-накожниці'],
+        'Кусачки для ногтей' => ['RU' => 'Кусачки для ногтей', 'UA' => 'Кусачки для нігтів'],
+        'Ножницы маникюрные' => ['RU' => 'Ножницы маникюрные', 'UA' => 'Манікюрні ножиці'],
+        'Лопатки, кюретки' => ['RU' => 'Лопатки, кюретки', 'UA' => 'Лопатки, кюретки'],
+        'Станки для педикюра, лезвия' => ['RU' => 'Станки для педикюра, лезвия', 'UA' => 'Станки для педикюру, леза'],
+        'RU_Кисти для ногтей' => ['RU' => 'Кисти для ногтей', 'UA' => 'Пензлики для нігтів'],
+        'Кисти для геля' => ['RU' => 'Кисти для геля', 'UA' => 'Пензлики для гелю'],
+        'Кисти для акрила' => ['RU' => 'Кисти для акрила', 'UA' => 'Пензлики для акрилу'],
+        'Кисти для дизайна ногтей' => ['RU' => 'Кисти для дизайна ногтей', 'UA' => 'Пензлики для дизайну нігтів'],
+        'Кисти для лепки' => ['RU' => 'Кисти для лепки', 'UA' => 'Пензлики для ліплення'],
+        'RU_Лаки и лечебные средства' => ['RU' => 'Лаки и лечебные средства', 'UA' => 'Лаки та лікувальні засоби'],
+        'Базы и топы для лака BLAZE' => ['RU' => 'Базы и топы для лака BLAZE', 'UA' => 'Бази та топи для лаку BLAZE'],
+        'Средства NAIL TEK' => ['RU' => 'Средства NAIL TEK', 'UA' => 'Засоби NAIL TEK'],
+        'Лаки для ногтей CHINA GLAZE' => ['RU' => 'Лаки для ногтей CHINA GLAZE', 'UA' => 'Лаки для нігтів CHINA GLAZE'],
+        'RU_Лампы для маникюра' => ['RU' => 'Лампы для маникюра', 'UA' => 'Лампи для манікюру'],
+        'LED / UV лампы' => ['RU' => 'LED / UV лампы', 'UA' => 'LED / UV лампи'],
+        'RU_Средства для маникюра и педикюра' => ['RU' => 'Средства для маникюра и педикюра', 'UA' => 'Засоби для манікюру та педикюру'],
+        'Праймеры, дегидраторы' => ['RU' => 'Праймеры, дегидраторы', 'UA' => 'Праймери, дегідратори'],
+        'Средства для снятия гель-лака' => ['RU' => 'Средства для снятия гель-лака', 'UA' => 'Засоби для зняття гель-лаку'],
+        'Уход за кутикулой' => ['RU' => 'Уход за кутикулой', 'UA' => 'Догляд за кутикулою'],
+        'Средства для удаления липкости' => ['RU' => 'Средства для удаления липкости', 'UA' => 'Засоби для видалення липкості'],
+        'Средства для очистки кистей' => ['RU' => 'Средства для очистки кистей', 'UA' => 'Засоби для очищення пензлів'],
+        'Лосьоны и кремы для рук и ног' => ['RU' => 'Лосьоны и кремы для рук и ног', 'UA' => 'Лосьйони та креми для рук і ніг'],
+        'Ремуверы для педикюра' => ['RU' => 'Ремуверы для педикюра', 'UA' => 'Ремувери для педикюру'],
+        'Скрабы и пилинги' => ['RU' => 'Скрабы и пилинги', 'UA' => 'Скраби та пілінги'],
+        'Соль для рук и ног' => ['RU' => 'Соль для рук и ног', 'UA' => 'Сіль для рук і ніг'],
+        'Маски для рук и ног' => ['RU' => 'Маски для рук и ног', 'UA' => 'Маски для рук і ніг'],
+        'Средства для обработки порезов' => ['RU' => 'Средства для обработки порезов', 'UA' => 'Засоби для обробки порізів'],
+        'Горячий маникюр, парафин' => ['RU' => 'Горячий маникюр, парафин', 'UA' => 'Гарячий манікюр, парафін'],
+        'RU_Фрезеры и насадки' => ['RU' => 'Фрезеры и насадки', 'UA' => 'Фрезери та насадки'],
+        'Фрезерные машинки' => ['RU' => 'Фрезерные машинки', 'UA' => 'Фрезерні машинки'],
+        'Фрезы керамические' => ['RU' => 'Фрезы керамические', 'UA' => 'Керамічні фрези'],
+        'Фрезы твердосплавные' => ['RU' => 'Фрезы твердосплавные', 'UA' => 'Твердосплавні фрези'],
+        'Фрезы алмазные' => ['RU' => 'Фрезы алмазные', 'UA' => 'Алмазні фрези'],
+        'Насадки сменные' => ['RU' => 'Насадки сменные', 'UA' => 'Змінні насадки'],
+        'Насадки корундовые' => ['RU' => 'Насадки корундовые', 'UA' => 'Корундові насадки'],
+        'Насадки полировочные' => ['RU' => 'Насадки полировочные', 'UA' => 'Полірувальні насадки'],
+        'Насадки для педикюра' => ['RU' => 'Насадки для педикюра', 'UA' => 'Насадки для педикюру'],
+        'Бафи' => ['RU' => 'Бафы', 'UA' => 'Бафи'],
+		'Бафы' => ['RU' => 'Бафы', 'UA' => 'Бафи'],
+        'Пилки' => ['RU' => 'Пилки', 'UA' => 'Пилки'],
+		'Пилки, бафы, полировщики' => ['RU' => 'Пилки, бафы, полировщики', 'UA' => 'Пилки, бафи, полірувальники'],
+        'Полировщики, шлифовщики' => ['RU' => 'Полировщики, шлифовщики', 'UA' => 'Полірувальники, шліфувальники'],
+		'Гель-лаки' => ['RU' => 'Гель-лаки', 'UA' => 'Гель-лаки'],
+        'Гель-лаки, бази, топи' => ['RU' => 'Гель-лаки, бази, топы', 'UA' => 'Гель-лаки, бази, топи'],
+        'Гель-лаки Blaze Up' => ['RU' => 'Гель-лаки Blaze Up', 'UA' => 'Гель-лаки Blaze Up'],
+        'Гель-лаки Blaze RA' => ['RU' => 'Гель-лаки Blaze RA', 'UA' => 'Гель-лаки Blaze RA'],
+        'Гель-лаки GelLaxy II' => ['RU' => 'Гель-лаки GelLaxy II', 'UA' => 'Гель-лаки GelLaxy II'],
+		'Бежевый' => ['RU' => 'Бежевый', 'UA' => 'Бежевий'],
+            'Белый' => ['RU' => 'Белый', 'UA' => 'Білий'],
+            'Голубой' => ['RU' => 'Голубой', 'UA' => 'Блакитний'],
+            'Желтый' => ['RU' => 'Желтый', 'UA' => 'Жовтий'],
+            'Зеленый' => ['RU' => 'Зеленый', 'UA' => 'Зелений'],
+            'Золотой' => ['RU' => 'Золотой', 'UA' => 'Золотий'],
+            'Коралловый' => ['RU' => 'Коралловый', 'UA' => 'Кораловий'],
+            'Коричневый' => ['RU' => 'Коричневый', 'UA' => 'Коричневий'],
+            'Красный' => ['RU' => 'Красный', 'UA' => 'Червоний'],
+            'Оранжевый' => ['RU' => 'Оранжевый', 'UA' => 'Оранжевий'],
+            'Персиковый' => ['RU' => 'Персиковый', 'UA' => 'Персиковий'],
+            'Прозрачный' => ['RU' => 'Прозрачный', 'UA' => 'Прозорий'],
+            'Разноцветный' => ['RU' => 'Разноцветный', 'UA' => 'Різнокольоровий'],
+            'Розовый' => ['RU' => 'Розовый', 'UA' => 'Рожевий'],
+            'Серебряный' => ['RU' => 'Серебряный', 'UA' => 'Сріблястий'],
+            'Серый' => ['RU' => 'Серый', 'UA' => 'Сірий'],
+            'Синий' => ['RU' => 'Синий', 'UA' => 'Синій'],
+            'Фиолетовый' => ['RU' => 'Фиолетовый', 'UA' => 'Фіолетовий'],
+            'Чёрный' => ['RU' => 'Чёрный', 'UA' => 'Чорний']
+		
+    ];
+
+    return $translations[$category_name][$lang] ?? $category_name;
+}
+
+add_filter('get_term', function($term) {
+    if ($term->taxonomy == 'product_cat') {
+        $term->name = translate_category_name($term->name);
+    }
+    return $term;
+});
+add_filter('get_term', function($term) {
+    if ($term->taxonomy == 'pa_tsvet') {
+        $term->name = translate_category_name($term->name);
+    }
+    return $term;
+});
+function translate_term_names($term, $taxonomy) {
+    if ('product_cat' === $taxonomy) {
+        $term->name = translate_category_name($term->name);
+    }
+    return $term;
+}
+add_filter('get_term', 'translate_term_names', 10, 2);
+function translate_term_names2($term, $taxonomy) {
+    if ('pa_tsvet' === $taxonomy) {
+        $term->name = translate_category_name($term->name);
+    }
+    return $term;
+}
+add_filter('get_term', 'translate_term_names2', 10, 2);
+
+
+
+function setup_language() {
+    if (isset($_GET['lang'])) {
+        setcookie('lang', $_GET['lang'], time() + 86400, '/'); // Save language for 1 day
+        $_COOKIE['lang'] = $_GET['lang']; // Update current request cookie value
+    }
+}
+add_action('init', 'setup_language');
+
+function translate_attribute_label($label) {
+    $lang = $_COOKIE['lang'] ?? 'RU';  // Получаем текущий язык пользователя
+
+    // Словарь переводов
+    $translations = [
+    'RU' => [
+		'Категорія' => 'Категория',
+        'Етикетка' => 'Этикетка',
+        'Счетчик акции' => 'Счётчик акций',
+        'Толщина' => 'Толщина',
+        'Блиск' => 'Блеск',
+        'Конфігурація' => 'Конфигурация',
+        'Форма' => 'Форма',
+        'Упаковка' => 'Упаковка',
+        'Длина лезвия' => 'Длина лезвия',
+        'Ріжучі_кромки' => 'Режущие кромки',
+        'Форма ручек' => 'Форма ручек',
+        'Длина ручек' => 'Длина ручек',
+        'Вигин_леза' => 'Изгиб лезвий',
+        'Продукт' => 'Продукт',
+        'Візерунок' => 'Рисунок',
+        'Лінія' => 'Линейка',
+        'Вигин' => 'Изгиб',
+        'Длина' => 'Длина',
+        'Колекція' => 'Коллекция',
+        'Колір' => 'Цвет',
+        'Особливості_продукту' => 'Особенности продукта',
+        'Липкість' => 'Липкость',
+        'Консистенція' => 'Консистенция',
+        'Тип_покриття' => 'Тип покрытия',
+        'Уф_фільтр' => 'УФ-фильтр',
+        'Обсяг' => 'Объем',
+        'Абразив' => 'Абразив',
+        'Ворс' => 'Ворс',
+        'Діаметр' => 'Диаметр',
+        'Длина ворса' => 'Длина ворса',
+        'Основа' => 'Основа',
+        'Швидкість_полімеризації' => 'Скорость полимеризации',
+        'Країна_виробництва' => 'Страна производитель',
+        'Тип' => 'Тип',
+        'Тренд' => 'Тренд',
+        'Название производителя' => 'Название производителя',
+        'Лейбл' => 'Лейбл',
+        'Глиттер' => 'Глиттер',
+        'Комплектация' => 'Комплектация'
+    ],
+    'UA' => [
+		'Категория' => 'Категорія',
+        'Этикетка' => 'Етикетка',
+        'Счётчик акций' => 'Лічильник акцій',
+        'Толщина' => 'Товщина',
+        'Блеск' => 'Блиск',
+        'Конфигурация' => 'Конфігурація',
+        'Форма' => 'Форма',
+        'Упаковка' => 'Упаковка',
+        'Длина лезвия' => 'Довжина леза',
+        'Режущие кромки' => 'Ріжучі кромки',
+        'Форма ручек' => 'Форма ручок',
+        'Длина ручек' => 'Довжина ручок',
+        'Изгиб лезвий' => 'Вигин лез',
+        'Продукт' => 'Продукт',
+        'Рисунок' => 'Візерунок',
+        'Линейка' => 'Лінія',
+        'Изгиб' => 'Вигин',
+        'Длина' => 'Довжина',
+        'Коллекция' => 'Колекція',
+        'Цвет' => 'Колір',
+        'Особенности продукта' => 'Особливості продукту',
+        'Липкость' => 'Липкість',
+        'Консистенция' => 'Консистенція',
+        'Тип покрытия' => 'Тип покриття',
+        'УФ-фильтр' => 'УФ-фільтр',
+        'Объем' => 'Обсяг',
+        'Абразив' => 'Абразив',
+        'Ворс' => 'Ворс',
+        'Диаметр' => 'Діаметр',
+        'Длина ворса' => 'Довжина ворсу',
+        'Основа' => 'Основа',
+        'Скорость полимеризации' => 'Швидкість полімеризації',
+        'Страна производитель' => 'Країна виробництва',
+        'Тип' => 'Тип',
+        'Тренд' => 'Тренд',
+        'Название производителя' => 'Назва виробника',
+        'Лейбл' => 'Лейбл',
+        'Глиттер' => 'Гліттер',
+        'Комплектация' => 'Комплектація'
+    ]
+];
+
+
+    return $translations[$lang][$label] ?? $label; // Возвращаем переведенный атрибут или оригинальный, если перевод отсутствует
+}
+
+add_filter('woocommerce_dropdown_variation_attribute_options_html', 'translate_color_attribute_values_html', 10, 2);
+function translate_color_attribute_values_html($html, $args) {
+    // Определяем текущий язык
+    $current_language = isset($_GET['lang']) ? $_GET['lang'] : 'RU'; 
+
+    // Словарь переводов
+    $translations = [
+            'Бежевый' => ['RU' => 'Бежевый', 'UA' => 'Бежевий'],
+            'Белый' => ['RU' => 'Белый', 'UA' => 'Білий'],
+            'Голубой' => ['RU' => 'Голубой', 'UA' => 'Блакитний'],
+            'Желтый' => ['RU' => 'Желтый', 'UA' => 'Жовтий'],
+            'Зеленый' => ['RU' => 'Зеленый', 'UA' => 'Зелений'],
+            'Золотой' => ['RU' => 'Золотой', 'UA' => 'Золотий'],
+            'Коралловый' => ['RU' => 'Коралловый', 'UA' => 'Кораловий'],
+            'Коричневый' => ['RU' => 'Коричневый', 'UA' => 'Коричневий'],
+            'Красный' => ['RU' => 'Красный', 'UA' => 'Червоний'],
+            'Оранжевый' => ['RU' => 'Оранжевый', 'UA' => 'Оранжевий'],
+            'Персиковый' => ['RU' => 'Персиковый', 'UA' => 'Персиковий'],
+            'Прозрачный' => ['RU' => 'Прозрачный', 'UA' => 'Прозорий'],
+            'Разноцветный' => ['RU' => 'Разноцветный', 'UA' => 'Різнокольоровий'],
+            'Розовый' => ['RU' => 'Розовый', 'UA' => 'Рожевий'],
+            'Серебряный' => ['RU' => 'Серебряный', 'UA' => 'Сріблястий'],
+            'Серый' => ['RU' => 'Серый', 'UA' => 'Сірий'],
+            'Синий' => ['RU' => 'Синий', 'UA' => 'Синій'],
+            'Фиолетовый' => ['RU' => 'Фиолетовый', 'UA' => 'Фіолетовий'],
+            'Чёрный' => ['RU' => 'Чёрный', 'UA' => 'Чорний']
+        ];
+
+
+    if (!empty($args['attribute']) && $args['attribute'] === 'pa_tsvet') {
+        foreach ($translations as $original => $langs) {
+            if (isset($langs[$current_language])) {
+                $translated = $langs[$current_language];
+                if (strpos($html, '>' . $original . '<') !== false) {
+                    error_log("Найден атрибут: $original; Переведено в: $translated");
+                }
+                $html = str_replace('>' . $original . '<', '>' . $translated . '<', $html);
+            }
+        }
+    }
+
+    return $html;
+}
+
+
+
+add_filter('woocommerce_attribute_label', 'translate_attribute_label', 10, 3);
+
+function add_custom_color_circles() {
+    $custom_css = "
+        .wc-block-components-checkbox__label:before {
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        #bezhevyi + .wc-block-components-checkbox__mark + .wc-block-components-checkbox__label:before { background-color: #f5f5dc; }  /* Бежевый */
+        #belyi + .wc-block-components-checkbox__mark + .wc-block-components-checkbox__label:before { background-color: #ffffff; }  /* Белый */
+        #goluboi + .wc-block-components-checkbox__mark + .wc-block-components-checkbox__label:before { background-color: #add8e6; }  /* Голубой */
+        #zheltyi + .wc-block-components-checkbox__mark + .wc-block-components-checkbox__label:before { background-color: #ffff00; }  /* Желтый */
+        #zelenyi + .wc-block-components-checkbox__mark + .wc-block-components-checkbox__label:before { background-color: #008000; }  /* Зеленый */
+        #zolotoi + .wc-block-components-checkbox__mark + .wc-block-components-checkbox__label:before { background-color: #ffd700; }  /* Золотой */
+        #koralovyi + .wc-block-components-checkbox__mark + .wc-block-components-checkbox__label:before { background-color: #ff7f50; }  /* Кораловый */
+        #korichnevyi + .wc-block-components-checkbox__mark + .wc-block-components-checkbox__label:before { background-color: #a52a2a; }  /* Коричневый */
+        #krasnyi + .wc-block-components-checkbox__mark + .wc-block-components-checkbox__label:before { background-color: #ff0000; }  /* Красный */
+        #oranzhevyi + .wc-block-components-checkbox__mark + .wc-block-components-checkbox__label:before { background-color: #ffa500; }  /* Оранжевый */
+        #persikovyi + .wc-block-components-checkbox__mark + .wc-block-components-checkbox__label:before { background-color: #ffe5b4; }  /* Персиковый */
+        #prozrachnyi + .wc-block-components-checkbox__mark + .wc-block-components-checkbox__label:before { background-color: #f0f8ff; }  /* Прозрачный */
+        #raznotsvetnyi + .wc-block-components-checkbox__mark + .wc-block-components-checkbox__label:before { background-color: #multicolor; }  /* Разноцветный */
+        #rozovyi + .wc-block-components-checkbox__mark + .wc-block-components-checkbox__label:before { background-color: #ffc0cb; }  /* Розовый */
+        #serebriannyi + .wc-block-components-checkbox__mark + .wc-block-components-checkbox__label:before { background-color: #c0c0c0; }  /* Серебрянный */
+        #seryi + .wc-block-components-checkbox__mark + .wc-block-components-checkbox__label:before { background-color: #808080; }  /* Серый */
+        #sinii + .wc-block-components-checkbox__mark + .wc-block-components-checkbox__label:before { background-color: #0000ff; }  /* Синий */
+        #fioletovyi + .wc-block-components-checkbox__mark + .wc-block-components-checkbox__label:before { background-color: #800080; }  /* Фиолетовый */
+        #chiornyi + .wc-block-components-checkbox__mark + .wc-block-components-checkbox__label:before { background-color: #000000; }  /* Чёрный */
+    ";
+
+    wp_add_inline_style('wp-block-library', $custom_css); // Использует уже зарегистрированный стиль wp-block-library для добавления ваших стилей
+}
+
+add_action('wp_enqueue_scripts', 'add_custom_color_circles');
+
